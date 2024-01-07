@@ -2,6 +2,7 @@
 
 ## STATUS: DEVELOPMENT
 Still being created, not even done the basic testing...
+- create installer for the 7za and dx files.
 - REad up on current stage, and progress.
 - Testing will have to be done at some point (make sure to backup entire FO4 folder).
 - Get up-to-date versions of third party binaries supplied.
