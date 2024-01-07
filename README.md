@@ -4,7 +4,6 @@
 Still being created, not even done the basic testing...
 - REad up on current stage, and progress, main.ps1 and processor.ps1 are mostly complete.
 - check and enhance, psd1 integration optimally to assist the recording of progress, listing of files etc.
-- fix the batch to run the ps1.
 - Setup fake data dir etc, Test, Testing results into updates for scripts, complete scripts.
 - Compile 7za into a portable single executable, and host on github, then include in downloader, to be able to upload project to Nexus.
 
@@ -22,7 +21,7 @@ AllTexConF04-Ps, designed for Fallout 4, epitomizes efficiency and user-friendli
 - **Detailed Output**: Provides comprehensive feedback during processing, including texture names and resolutions.
 
 ## USAGE
-1. Run `Setup-Install.Bat` to install required libraries.
+1. Run `Setup-Install.Bat` to, install required libraries and create program folders.
 2. Run `AllTexConFO4.Bat` to start the script.
 3. Select the desired maximum resolution for textures from menu.
 4. Choose the GPU for processing textures.
