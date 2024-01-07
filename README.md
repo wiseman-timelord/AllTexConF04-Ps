@@ -33,7 +33,7 @@ AllTexConF04-Ps, designed for Fallout 4, epitomizes efficiency and user-friendli
 - Windows PowerShell 5.1 or higher.
 - Installed Fallout 4 game with accessible texture files and `.ba2` archives.
 - Library Requirements installed by `Setup-Installer.Bat`.
-- Git, required by installer for "7za", only agailable on websites in, 7z and msi, format! 
+- Git, required by installer for "7za", only available on websites in, 7z and msi, format! 
 
 ## NOTATION
 - Credit 1 - Microsoft DirectX: This project uses `texconv.exe` and `texdiag.exe` from the DirectXTex library, a part of Microsoft DirectX. For more information, visit [Microsoft's DirectXTex repository](https://github.com/microsoft/DirectXTex).
