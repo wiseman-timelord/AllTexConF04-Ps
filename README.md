@@ -7,7 +7,7 @@ Still being created, not even done the basic testing...
 - Get up-to-date versions of third party binaries supplied.
 
 ## DESCRIPTION
-AllTexConF04-Ps is a sophisticated PowerShell script tailored for Fallout 4 enthusiasts and modders. It's designed to automate the process of conforming game textures to specific resolutions and formats. Whether dealing with vanilla or modded textures, AllTexConF04-Ps streamlines the task, enhancing game performance and visual fidelity. Its ability to handle `.dds` textures and `.ba2` archives makes it an invaluable tool for improving gaming experience.
+AllTexConF04-Ps, designed for Fallout 4, epitomizes efficiency and user-friendliness in Fallout 4 texture processing. It processes both loose and BA2 textures, in batch and at the same time, optimizing them with DX1 or DX7 compression for non-transparent and transparent textures, respectively. AllTexConF04-Ps adjusts resolutions to user selection of, 2048x* or 1024x* or 512x*, maintaining aspect ratios. If you have multiple graphics card, the standout feature is the GPU selection capability, which leverages the power of specified GPUs of choice to accelerate processing. Its interface is intuitive, and it provides detailed output, including texture names and resolutions. AllTexConF04-Ps is optimized for speed, extracting files from Ba2, then updating the textures folder only back to the original Ba2, instead of re-compressing ba2 files.
 
 ## FEATURES
 - **Resolution Adjustment**: Dynamically scales textures exceeding a target resolution, maintaining aspect ratio.
