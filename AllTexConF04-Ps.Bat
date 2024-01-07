@@ -57,7 +57,6 @@ goto menu
 
 :: Function to Check File Structure
 :checkScript
-echo.
 echo Checking Script Files...
 set missing=0
 timeout /t 1 /nobreak >nul
