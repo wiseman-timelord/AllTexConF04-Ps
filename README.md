@@ -2,8 +2,8 @@
 
 ## STATUS: DEVELOPMENT
 Still being created, not even done the basic testing...
-- update installer for the 7za files.
-- REad up on current stage, and progress.
+- REad up on current stage, and progress, main.ps1 and processor.ps1 are mostly complete.
+- check and enhance, ps1 integration optimally to assist the recording of progress, listing of files etc.
 - Testing will have to be done at some point (make sure to backup entire FO4 folder).
 - Get up-to-date versions of third party binaries supplied.
 
