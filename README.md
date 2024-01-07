@@ -1,6 +1,6 @@
 # AllTexConF04-Ps
 
-## STATUS: WORKING
+## STATUS: DEVELOPMENT
 Still being created, not even done the basic testing...
 - REad up on current stage, and progress.
 - Testing will have to be done at some point (make sure to backup entire FO4 folder).
