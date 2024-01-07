@@ -6,6 +6,7 @@ Still being created, not even done the basic testing...
 - check and enhance, psd1 integration optimally to assist the recording of progress, listing of files etc.
 - Testing will have to be done at some point (make sure to backup entire FO4 folder).
 - Get up-to-date versions of third party binaries supplied.
+- Compile 7za into a portable single executable, and host on github, then include in downloader, to be able to upload project to Nexus.
 
 ## DESCRIPTION
 AllTexConF04-Ps, designed for Fallout 4, epitomizes efficiency and user-friendliness in Fallout 4 texture processing. It processes both loose and BA2 textures, optimizing them with DX1 or DX7 compression for non-transparent and transparent textures, respectively. AllTexConF04-Ps adjusts resolutions to user selection of, 2048x* or 1024x* or 512x*, maintaining aspect ratios. Its interface is intuitive, and it provides detailed output, including texture names and resolutions. AllTexConF04-Ps is optimized for speed, extracting files from Ba2, then updating the textures folder only back to the original Ba2, instead of re-compressing ba2 files. There are indeed other DDS conversion tools for Fallout 4, but the standout features will be:
@@ -31,7 +32,8 @@ AllTexConF04-Ps, designed for Fallout 4, epitomizes efficiency and user-friendli
 ## REQUIREMENTS
 - Windows PowerShell 5.1 or higher.
 - Installed Fallout 4 game with accessible texture files and `.ba2` archives.
-- Required external tools: `texconv.exe`, `texdiag.exe`, and `7za.exe` in the specified `BinDirectory`.
+- Library Requirements installed by `Setup-Installer.Bat`.
+- Git, required by installer for "7za", only agailable on websites in, 7z and msi, format! 
 
 ## NOTATION
 - Credit 1 - Microsoft DirectX: This project uses `texconv.exe` and `texdiag.exe` from the DirectXTex library, a part of Microsoft DirectX. For more information, visit [Microsoft's DirectXTex repository](https://github.com/microsoft/DirectXTex).
