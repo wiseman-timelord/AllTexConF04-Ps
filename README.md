@@ -1,7 +1,7 @@
 # AllTexConF04-Ps
 
 ## STATUS: DEVELOPMENT
-Still being created, not even done the basic testing...
+Still being created, not even done the basic testing, most of it is figured out and implemented...
 - REad up on current stage, and progress, main.ps1 and processor.ps1 are mostly complete.
 - check and enhance, psd1 integration optimally to assist the recording of progress, listing of files etc.
 - Setup fake data dir etc, Test, Testing results into updates for scripts, complete scripts.
