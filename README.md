@@ -22,22 +22,22 @@ AllTexConF04-Ps, designed for Fallout 4, epitomizes efficiency and user-friendli
 - **Detailed Output**: Provides comprehensive feedback during processing, including texture names and resolutions.
 
 ## USAGE
-1. Ensure all required tools (`texconv.exe`, `texdiag.exe`, `7za.exe`) are placed in the `BinDirectory`.
-2. Run `main.ps1` to start the script.
-3. Select the desired resolution for texture processing.
-4. Choose the GPU for processing (if available).
+1. Run `Setup-Install.Bat` to install required libraries.
+2. Run `AllTexConFO4.Bat` to start the script.
+3. Select the desired maximum resolution for textures from menu.
+4. Choose the GPU for processing textures.
 5. Let the script process the textures in your Fallout 4 directory.
 6. Upon completion, processed textures are saved, and the script reports the status.
 
 ## REQUIREMENTS
 - Windows PowerShell 5.1 or higher.
-- Installed Fallout 4 game with accessible texture files and `.ba2` archives.
+- Installed Fallout 4 game, any, version and mods, will be fine.
 - Library Requirements installed by `Setup-Installer.Bat`.
-- Git, required by installer for "7za", only available on websites in, 7z and msi, format! 
+- Git, required by installer for, "7za" and "DirectXTex".
 
 ## NOTATION
-- Credit 1 - Microsoft DirectX: This project uses `texconv.exe` and `texdiag.exe` from the DirectXTex library, a part of Microsoft DirectX. For more information, visit [Microsoft's DirectXTex repository](https://github.com/microsoft/DirectXTex).
-- Credit 2 - 7-Zip Team: The project incorporates `7za.dll`, `7za.exe`, and `7zxa.dll` from 7-Zip. 7-Zip is licensed under the GNU LGPL. More details are available on the [7-Zip website](http://www.7-zip.org/).
+- 7za is only available on websites in, 7z and msi, format, must compile 7za into a portable single executable, and host on github, then include in Setup-Install.Bat, to be able to upload project to Nexus.
+- Credit to - 7-Zip Team and Microsoft, for relevantly, 7za abd DirectXTex.
 
 ## DISCLAIMER
 This program is provided "as is" without warranties or support. Users are responsible for the content they, download and use, as well as, any resulting damage to, hardware or sanity.
