@@ -6,7 +6,6 @@ Still being created, not even done the basic testing...
 - check and enhance, psd1 integration optimally to assist the recording of progress, listing of files etc.
 - make the batch to run the ps1, try with and without admin, setup fake data dir etc.
 - Testing results into updates for scripts, complete scripts.
-- Get up-to-date versions of third party binaries supplied.
 - Compile 7za into a portable single executable, and host on github, then include in downloader, to be able to upload project to Nexus.
 
 ## DESCRIPTION
