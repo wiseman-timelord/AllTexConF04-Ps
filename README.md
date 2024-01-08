@@ -2,7 +2,7 @@
 
 ### STATUS: DEVELOPMENT
 Still being created, not even done the basic testing, most of it is figured out and implemented...
-- REad up on current stage, and progress, main.ps1 and processor.ps1 are mostly complete.
+- Concern about detection of transparency and application of resulting format...
 - check and enhance, psd1 integration optimally to assist the recording of progress, listing of files etc.
 - Setup fake data dir etc, Test, Testing results into updates for scripts, complete scripts.
 - Look into possibilities of multi-gpu processing, utilizing psd1 for splitting file lists.
