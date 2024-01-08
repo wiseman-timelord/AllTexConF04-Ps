@@ -1,4 +1,4 @@
-# Script: processing.ps1
+# Script: scripts\processing.ps1
 
 # Function Initiatetextureprocessing
 function InitiateTextureProcessing {

@@ -23,17 +23,20 @@ $Global:ResultingDataSize = 0
 # Function Show Title
 function Show-Title {
     Clear-Host
-	Write-Host "==================( AllTexConFO4-Ps )=================="
+	Write-Host "`n======================( AllTexConFO4-Ps )======================"
 }
 
 # Function Show Mainmenu
 function Show-MainMenu {
     Show-Title
-    Write-Host "---------------------( Main Menu )---------------------`n"
-    Write-Host "1. Set Data Folder Location"
-    Write-Host "2. Set Max Image Resolution"
-    Write-Host "3. Set GPU Processor To Use"
-    $choice = Read-Host "`nSelect, Settings=1-3, Begin=B, Exit=X: "
+    Write-Host "-------------------------( Main Menu )-------------------------`n`n`n`n`n`n`n`n"
+    Write-Host "                 1. Set Data Folder Location,`n"
+    Write-Host "                 2. Set Max Image Resolution,`n"
+    Write-Host "                 3. Set GPU Processor To Use,`n"
+    Write-Host "                 B. Begin Processing Textures,`n"
+    Write-Host "                       X. Exit Program.`n`n`n`n`n`n`n"
+	Write-Host "---------------------------------------------------------------"
+    $choice = Read-Host "Select, Settings=1-3, Begin=B, Exit=X"
     switch ($choice) {
         "1" { Show-DataFolderMenu }
         "2" { Show-ResolutionMenu }
@@ -47,10 +50,10 @@ function Show-MainMenu {
 # Function Show Datafoldermenu
 function Show-DataFolderMenu {
     Show-Title
-    Write-Host "-------------------( Folders Menu )--------------------`n"
-    Write-Host "Current Data Folder Location: $($Global:DataDirectory)"
-    Write-Host "1. Enter New Data Folder Location"
-    $choice = Read-Host "`nSelect, Options 1, Main Menu=M: "
+    Write-Host "-----------------------( Folders Menu )------------------------`n"
+    Write-Host "                   Fallout4\Data Location:`n    $($Global:DataDirectory)`n"
+    Write-Host "            1. Enter New Data Folder Location"
+    $choice = Read-Host "`nSelect, Options 1, Main Menu=M"
     switch ($choice) {
         "1" { 
             $newDataFolder = Read-Host "Enter the absolute path to the Fallout 4 Data Directory"
@@ -65,11 +68,11 @@ function Show-DataFolderMenu {
 # Function Show Resolutionmenu
 function Show-ResolutionMenu {
     Show-Title
-    Write-Host "--------------------( Format Menu )--------------------`n"
-    Write-Host "Current: $($Global:TargetResolution)"
-    Write-Host "1. Set Max Res To 512x"
-    Write-Host "2. Set Max Res To 1024x"
-    Write-Host "3. Set Max Res To 2048x"
+    Write-Host "------------------------( Format Menu )------------------------`n"
+    Write-Host "                      Current Resolution:`n                   $($Global:TargetResolution)`n"
+    Write-Host "                   1. Set Max Res To 512x"
+    Write-Host "                   2. Set Max Res To 1024x"
+    Write-Host "                   3. Set Max Res To 2048x"
     $choice = Read-Host "`nSelect, Options 1-3, Main Menu=M"
     switch ($choice) {
         "1" { $Global:TargetResolution = 512; Show-ResolutionMenu }
@@ -90,13 +93,13 @@ function Get-GPUList {
 # Function Show Gpuselectionmenu
 function Show-GPUSelectionMenu {
     Show-Title
-    Write-Host "----------------------( GPU Menu )---------------------`n"
+    Write-Host "--------------------------( GPU Menu )-------------------------`n"
     $gpuList = Get-GPUList
     Write-Host "`nSelect GPU for Texture Processing:"
     foreach ($gpu in $gpuList) {
         Write-Host $gpu
     }
-    $choice = Read-Host "Select, GPU Choice = 1-9, Main Menu=M: "
+    $choice = Read-Host "Select, GPU Choice = 1-9, Main Menu=M"
     if ($choice -eq 'M') {
         Show-MainMenu
     } elseif ($choice -in $gpuList) {
@@ -134,7 +137,7 @@ function DisplaySummaryScreen {
         $verdict = "New LowScore!"
     }
     Show-Title
-	Write-Host "-------------------( Final Summary )-------------------"
+	Write-Host "-----------------------( Final Summary )-----------------------"
     Write-Host "Processing Stats:"
     Write-Host "Start: $($Global:ProcessingStartTime.ToString('HH:mm')), Duration: $processingTimeFormatted"
     Write-Host "Processed: $($Global:FilesProcessed), Passed: $($Global:FilesPassed)"
@@ -149,7 +152,7 @@ function DisplaySummaryScreen {
 
 # Function Pausemenu
 function PauseMenu {
-    Write-Host "`nSelect, Exit Program=X, Error Log=E:"
+    Write-Host "`nSelect, Exit Program=X, Error Log=E"
     $choice = Read-Host "Select"
     switch ($choice) {
         "X" { Write-Host "Exiting..."; return }
