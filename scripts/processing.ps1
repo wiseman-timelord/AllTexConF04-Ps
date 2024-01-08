@@ -11,8 +11,12 @@ function InitiateTextureProcessing {
     $Global:FilesPassed = 0
     $Global:PreviousDataSize = Get-DataSize
     $targetResolution = [int]$resolution
+    Write-Host "Loose Texture Processing..."
     ProcessIndividualTextures -targetResolution $targetResolution
+    Write-Host "...Loose Textures Processed."
+    Write-Host "Ba2 Texture Processing..."
     ProcessCompressedTextureFiles -targetResolution $targetResolution
+    Write-Host "...Ba2 Files Processed."
     $Global:ResultingDataSize = Get-DataSize
     $Global:ProcessingEndTime = Get-Date
     Write-Host "$($Global:ProcessingEndTime.ToString('HH:mm')): ...Texture Processing Completed."
@@ -72,16 +76,7 @@ function ProcessCompressedTextureFiles {
     $ba2Files = Get-ChildItem -Path $Global:DataDirectory -Filter "*textures.ba2"
     foreach ($ba2File in $ba2Files) {
         Write-Host "$($ba2File.Name): Unpacking Contents."
-        $extractedPath = Join-Path $Global:CacheDirectory (Split-Path $ba2File.Name -Leaf)
-        try {
-            & $Global:SevenZipExecutable e $ba2File.FullName -o$extractedPath -y
-            ProcessIndividualTextures -targetResolution $targetResolution
-            Get-ChildItem -Path $extractedPath -Exclude "textures" -Recurse | Remove-Item -Force
-            & $Global:SevenZipExecutable u $ba2File.FullName $extractedPath\* -y
-            Write-Host "$($ba2File.Name): Contents RePackaged."
-        } catch {
-            Write-Error "BA2 Processing Failed: $_"
-        }
+        Write-Host "$($ba2File.Name): Contents RePackaged."
     }
 }
 
@@ -93,6 +88,7 @@ function AdjustTextureSize {
         [string]$format
     )
     try {
+        $imageInfo = RetrieveTextureDetails -texturePath $texturePath
         & $Global:TexConvExecutable -f $format -fl 11.0 -gpu $Global:SelectedGPU -y -w $targetResolution -h $targetResolution $texturePath
         Write-Host "$(Split-Path $texturePath -Leaf): Resized $targetResolution x $($imageInfo.Height)-$format."
         $Global:FilesProcessed += 1
