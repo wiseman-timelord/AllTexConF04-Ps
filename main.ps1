@@ -1,6 +1,3 @@
-has this been updated correctly?
-
-
 # Script: main.ps1
 
 # Variables
@@ -50,9 +47,11 @@ function Show-MainMenu {
 # Function Show Datafoldermenu
 function Show-DataFolderMenu {
     Show-Title
-    Write-Host "-----------------------( Folders Menu )------------------------`n"
-    Write-Host "                   Fallout4\Data Location:`n    $($Global:DataDirectory)`n"
-    Write-Host "            1. Enter New Data Folder Location"
+    $dataFolderDisplay = if ($Global:DataDirectory.Length -le 58) { $Global:DataDirectory.PadLeft(($Global:DataDirectory.Length + 58) / 2) } else { $Global:DataDirectory }
+    Write-Host "-----------------------( Folders Menu )------------------------`n`n`n`n`n`n`n`n`n"
+    Write-Host "                    Fallout 4\Data Location:`n    $dataFolderDisplay`n"
+    Write-Host "                     1. Enter New Location`n"
+    Write-Host "                     M. Return To Main Menu`n`n`n`n`n`n`n`n`n"
     $choice = Read-Host "`nSelect, Options 1, Main Menu=M"
     switch ($choice) {
         "1" { 
@@ -68,11 +67,13 @@ function Show-DataFolderMenu {
 # Function Show Resolutionmenu
 function Show-ResolutionMenu {
     Show-Title
-    Write-Host "------------------------( Format Menu )------------------------`n"
-    Write-Host "                      Current Resolution:`n                   $($Global:TargetResolution)`n"
-    Write-Host "                   1. Set Max Res To 512x"
-    Write-Host "                   2. Set Max Res To 1024x"
-    Write-Host "                   3. Set Max Res To 2048x"
+    Write-Host "------------------------( Format Menu )------------------------`n`n`n`n`n`n`n"
+    Write-Host "                      Current Resolution:"
+	Write-Host "                             *x$($Global:TargetResolution)`n"
+    Write-Host "                   1. Set Max Res To *x512`n"
+    Write-Host "                   2. Set Max Res To *x1024`n"
+    Write-Host "                   3. Set Max Res To *x2048`n"
+    Write-Host "                    M. Return To Main Menu`n`n`n`n`n`n`n"
     $choice = Read-Host "`nSelect, Options 1-3, Main Menu=M"
     switch ($choice) {
         "1" { $Global:TargetResolution = 512; Show-ResolutionMenu }
@@ -93,12 +94,15 @@ function Get-GPUList {
 # Function Show Gpuselectionmenu
 function Show-GPUSelectionMenu {
     Show-Title
-    Write-Host "--------------------------( GPU Menu )-------------------------`n"
     $gpuList = Get-GPUList
+    $gpuCount = $gpuList.Count
+    $extraLines = 9 - $gpuCount  # Adjust based on total lines in menu
+    Write-Host "--------------------------( GPU Menu )-------------------------`n"
     Write-Host "`nSelect GPU for Texture Processing:"
     foreach ($gpu in $gpuList) {
         Write-Host $gpu
     }
+    Write-Host ("`n" * $extraLines)
     $choice = Read-Host "Select, GPU Choice = 1-9, Main Menu=M"
     if ($choice -eq 'M') {
         Show-MainMenu
