@@ -28,9 +28,9 @@ AllTexConF04-Ps, designed for Fallout 4, epitomizes efficiency and user-friendli
 ```
 ==================( AllTexConFO4-Ps )==================
 
-              1. Set Data Folder Location
-              2. Set Max Image Resolution
-              3. Set GPU Processor To Use
+              1. Set Data Folder Location,
+              2. Set Max Image Resolution,
+              3. Set GPU Processor To Use,
               0. Begin Image Processing...
 
 Select, Settings=1-3, Begin=0, Exit=X: 
