@@ -1,13 +1,20 @@
 # Script: scrips\processing.ps1
 
-# Process Textures
 function InitiateTextureProcessing {
     param (
         [string]$resolution
     )
+    $Global:ProcessingStartTime = Get-Date
+    $Global:FilesProcessed = 0
+
     $targetResolution = [int]$resolution
     ProcessIndividualTextures -targetResolution $targetResolution
     ProcessCompressedTextureFiles -targetResolution $targetResolution
+
+    $Global:ProcessingEndTime = Get-Date
+
+    # Invoke the summary screen
+    DisplaySummaryScreen
 }
 
 # Texture Info Retrieval
@@ -78,8 +85,6 @@ function AdjustTextureSize {
         Write-Error "Resizing Failed for $texturePath"
     }
 }
-
-
 
 # BA2 Repackaging
 function RepackageTexturesIntoBA2 {

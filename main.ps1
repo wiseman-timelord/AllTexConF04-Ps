@@ -9,7 +9,9 @@ $Global:CacheDirectory = Join-Path $scriptPath "cache"
 $Global:DataDirectory = $Global:Config.DataFolderLocation
 $Global:TargetResolution = 1024  # Default resolution
 $Global:SelectedGPU = 0  # Default GPU
-
+$Global:ProcessingStartTime = $null
+$Global:ProcessingEndTime = $null
+$Global:FilesProcessed = 0
 
 # Imports
 . ".\AllTexConform-Ps\scripts\processing.ps1"
@@ -101,6 +103,56 @@ function Show-GPUSelectionMenu {
     } else {
         Write-Host "Invalid option, please try again"
         Show-GPUSelectionMenu
+    }
+}
+
+function CalculateScore {
+    param (
+        [int]$texturesProcessed,
+        [TimeSpan]$processingTime
+    )
+    if ($processingTime.TotalSeconds -eq 0) { return 0 }
+    return [math]::Round(($texturesProcessed / $processingTime.TotalSeconds) * 10, 2)
+}
+
+function DisplaySummaryScreen {
+    $processingTime = $Global:ProcessingEndTime - $Global:ProcessingStartTime
+    $score = CalculateScore -texturesProcessed $Global:FilesProcessed -processingTime $processingTime
+
+    $Global:Config.UserPreviousScore = $Global:Config.UserCurrentHighScore
+    if ($score -gt $Global:Config.UserCurrentHighScore) {
+        $Global:Config.UserCurrentHighScore = $score
+        Write-Host "New HighScore!" -ForegroundColor Green
+    }
+    elseif ($score -lt $Global:Config.UserCurrentLowScore -or $Global:Config.UserCurrentLowScore -eq 0) {
+        $Global:Config.UserCurrentLowScore = $score
+        Write-Host "New LowScore!" -ForegroundColor Red
+    }
+
+    Write-Host "Processing Time: $($processingTime.ToString())"
+    Write-Host "Textures Processed: $($Global:FilesProcessed)"
+    Write-Host "Score: $score"
+    Write-Host "Current High Score: $($Global:Config.UserCurrentHighScore)"
+    Write-Host "Previous Score: $($Global:Config.UserPreviousScore)"
+    Write-Host "Current Low Score: $($Global:Config.UserCurrentLowScore)"
+
+    PauseMenu
+}
+
+
+function PauseMenu {
+    Write-Host "`nSelect, Exit Program=X, Error Log=E:"
+    $choice = Read-Host "Select"
+    switch ($choice) {
+        "X" { Write-Host "Exiting..."; return }
+        "E" {
+            if (Test-Path ".\Errors-Crash.Log") {
+                Get-Content ".\Errors-Crash.Log" | Out-Host
+            } else {
+                Write-Host "Error log file does not exist."
+            }
+        }
+        default { Write-Host "Invalid option, please try again"; PauseMenu }
     }
 }
 
