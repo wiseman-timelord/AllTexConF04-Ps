@@ -33,7 +33,8 @@ function ProcessIndividualTextures {
         [int]$targetResolution
     )
     $texturesPath = Join-Path $Global:DataDirectory "Textures"
-    $textures = Get-ChildItem -Path $texturesPath -Filter $Global:Config.DdsFilePattern -Recurse
+    # Hardcoding DdsFilePattern as "*.dds"
+    $textures = Get-ChildItem -Path $texturesPath -Filter "*.dds" -Recurse
     foreach ($texture in $textures) {
         $imageInfo = RetrieveTextureDetails -texturePath $texture.FullName
         if ($imageInfo.Width -gt $targetResolution) {
@@ -41,6 +42,26 @@ function ProcessIndividualTextures {
         }
     }
     Write-Host "Loose Textures Processed"
+}
+
+# BA2 Texture Processing
+function ProcessCompressedTextureFiles {
+    param (
+        [int]$targetResolution
+    )
+    # Hardcoding Ba2FilePattern as "*textures.ba2"
+    $ba2Files = Get-ChildItem -Path $Global:DataDirectory -Filter "*textures.ba2"
+    foreach ($ba2File in $ba2Files) {
+        $extractedPath = Join-Path $Global:CacheDirectory (Split-Path $ba2File.Name -Leaf)
+        try {
+            & $Global:SevenZipExecutable e $ba2File.FullName -o$extractedPath -y
+            ProcessIndividualTextures -targetResolution $targetResolution
+            Get-ChildItem -Path $extractedPath -Exclude "textures" -Recurse | Remove-Item -Force
+            & $Global:SevenZipExecutable u $ba2File.FullName $extractedPath\* -y
+        } catch {
+            Write-Error "BA2 Processing Failed: $_"
+        }
+    }
 }
 
 # Texture Resizing
@@ -58,24 +79,7 @@ function AdjustTextureSize {
     }
 }
 
-# BA2 Texture Processing
-function ProcessCompressedTextureFiles {
-    param (
-        [int]$targetResolution
-    )
-    $ba2Files = Get-ChildItem -Path $Global:DataDirectory -Filter $Global:Config.Ba2FilePattern
-    foreach ($ba2File in $ba2Files) {
-        $extractedPath = Join-Path $Global:CacheDirectory (Split-Path $ba2File.Name -Leaf)
-        try {
-            & $Global:SevenZipExecutable e $ba2File.FullName -o$extractedPath -y
-            ProcessIndividualTextures -targetResolution $targetResolution
-            Get-ChildItem -Path $extractedPath -Exclude "textures" -Recurse | Remove-Item -Force
-            & $Global:SevenZipExecutable u $ba2File.FullName $extractedPath\* -y
-        } catch {
-            Write-Error "BA2 Processing Failed: $_"
-        }
-    }
-}
+
 
 # BA2 Repackaging
 function RepackageTexturesIntoBA2 {
