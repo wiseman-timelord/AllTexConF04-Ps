@@ -41,16 +41,16 @@ Select, Settings=1-3, Begin=0, Exit=X:
 ```
 ==================( AllTexConFO4-Ps )==================
 
-Processing Time: 00:03:45
-Textures Processed: 150
-Score: 6.67
+               Processing Time: 00:03:45
+                Textures Processed: 150
+                  Current Score: 6.67
 
-Current High Score: 8.20
-Previous Score: 5.50
-Current Low Score: 4.75
+               Current High Score: 8.20
+                 Previous Score: 5.50
+                Current Low Score: 4.75
 
-Note: 
-Average Score! (o_o)
+                       Verdict: 
+                  Average Score! (o_o)
 
 Select, Exit Program=X, Error Log=E:
 
