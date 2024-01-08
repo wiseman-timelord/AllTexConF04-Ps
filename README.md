@@ -42,18 +42,18 @@ Select, Settings=1-3, Begin=0, Exit=X:
 ==================( AllTexConFO4-Ps )==================
 
                    Processing Stats:
-        Start: 22:33 Duration: 03:13, End: 22:46
-             Processed: 57, Passed: 23  
-           Saved: 14.2 MB, Reduction: 9%                  
-				  				  
-				   Resulting Scores: 
-		     Current: 6.67, Previous: 5.50
-              Highest: 8.20, Lowest: 4.75
+             Start: 22:33, Duration: 03:13
+               Processed: 57, Passed: 23  
+             Saved: 14.2 MB, Reduction: 9%                  
+
+                    Resulting Scores: 
+	      Current: 6.67, Previous: 5.50
+               Highest: 8.20, Lowest: 4.75
               
                        Verdict: 
                   Average Score! (o_o)
 
-Select, Exit Program=X, Error Log=E:
+Select, Error Log=E, Exit Program=X:
 
 ````
 
