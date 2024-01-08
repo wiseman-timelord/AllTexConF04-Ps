@@ -100,7 +100,7 @@ Select, Error Log=E, Exit Program=X:
 6. Upon completion, processed textures are saved, and the script reports the status.
 
 ### REQUIREMENTS
-- Windows PowerShell 5.1 or higher.
+- PowerShell =>4.0 (Win =>8.1, or get 5.1 Update) or Powershell Core =>7.
 - Installed Fallout 4 game, any, version and mods, will be fine.
 - Library Requirements installed by `Setup-Installer.Bat`.
 - Git, required by installer for, "7za" and "DirectXTex".
