@@ -5,7 +5,6 @@ function Process-Textures {
     param (
         [string]$resolution
     )
-    # Resolution-based processing
     $targetResolution = [int]$resolution
     Process-LooseTextures -targetResolution $targetResolution
     Process-BA2Textures -targetResolution $targetResolution
@@ -16,8 +15,9 @@ function Process-LooseTextures {
     param (
         [int]$targetResolution
     )
-    Copy-Item -Path $Global:TexturesDirectory -Destination $Global:CacheDirectory -Recurse
-    $textures = Get-ChildItem -Path $Global:CacheDirectory -Filter $Global:DdsFilePattern -Recurse
+    $texturesPath = Join-Path $Global:DataDirectory "Textures"
+    Copy-Item -Path $texturesPath -Destination $Global:CacheDirectory -Recurse
+    $textures = Get-ChildItem -Path $Global:CacheDirectory -Filter $Global:Config.DdsFilePattern -Recurse
     foreach ($texture in $textures) {
         if (Check-TextureSize -texturePath $texture.FullName -targetResolution $targetResolution) {
             $format = Determine-Format $texture.FullName
@@ -26,27 +26,23 @@ function Process-LooseTextures {
             Convert-Texture -texturePath $texture.FullName -format $format -imageName $imageName -imageResolution $imageResolution
         }
     }
-    Move-Item -Path $Global:CacheDirectory -Destination $Global:TexturesDirectory -Force
+    Move-Item -Path $Global:CacheDirectory -Destination $texturesPath -Force
     Write-Host "Loose Textures Processed"
 }
 
 
 # BA2 Texture Processing
 function Process-BA2Textures {
-    $ba2Files = Get-ChildItem -Path $Global:DataDirectory -Filter "*Textures.ba2"
+    param (
+        [int]$targetResolution
+    )
+    $ba2Files = Get-ChildItem -Path $Global:DataDirectory -Filter $Global:Config.Ba2FilePattern
     foreach ($ba2File in $ba2Files) {
         $extractedPath = Join-Path $Global:CacheDirectory (Split-Path $ba2File.Name -Leaf)
         try {
-            # Extract all files from BA2 file
             & $Global:SevenZipExecutable e $ba2File.FullName -o$extractedPath -y
-            
-            # Process only textures
-            Process-LooseTextures -TextureDirectory (Join-Path $extractedPath "textures")
-            
-            # Delete non-texture files from cache
+            Process-LooseTextures -targetResolution $targetResolution
             Get-ChildItem -Path $extractedPath -Exclude "textures" -Recurse | Remove-Item -Force
-
-            # Update original BA2 file with processed textures
             & $Global:SevenZipExecutable u $ba2File.FullName $extractedPath\* -y
         } catch {
             Write-Error "BA2 Processing Failed: $_"

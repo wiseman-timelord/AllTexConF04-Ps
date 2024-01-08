@@ -43,17 +43,18 @@ if %ERRORLEVEL% equ 0 (
     echo Launching as PowerShellCore Script...
     echo.
     timeout /t 2 /nobreak >nul
-    pwsh.exe -NoProfile -ExecutionPolicy Bypass -File ".\main.ps1"
-    echo ...PowerShellCore Script Exited.
+    pwsh.exe -NoProfile -ExecutionPolicy Bypass -File ".\main.ps1" >".\Errors-Crash.Log" 2>&1
+    echo ...Main Script Exited.
 ) else (
     echo Launching as PowerShell Script...
     echo.
     timeout /t 2 /nobreak >nul
-    powershell.exe -NoProfile -ExecutionPolicy Bypass -File ".\main.ps1"
-    echo ...PowerShell Script Exited.
+    powershell.exe -NoProfile -ExecutionPolicy Bypass -File ".\main.ps1" >".\Errors-Crash.Log" 2>&1
+    echo ...Main Script Exited.
 )
 timeout /t 1 /nobreak >nul
 goto menu
+
 
 :: Function to Check File Structure
 :checkScript
@@ -63,7 +64,7 @@ timeout /t 1 /nobreak >nul
 
 :: Check for PowerShell script files
 if not exist ".\scripts\processing.ps1" set missing=1
-if not exist ".\scripts\conf-data.psd1" set missing=1
+if not exist ".\scripts\configuration.psd1" set missing=1
 if not exist ".\main.ps1" set missing=1
 
 if %missing%==1 (
