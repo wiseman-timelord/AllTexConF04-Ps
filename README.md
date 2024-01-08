@@ -3,6 +3,7 @@
 ### STATUS: DEVELOPMENT
 Still being created, not even done the basic testing, most of it is figured out and implemented...
 - Fix GPU menus. Asses interpretation of output from "texdiag info" in relevance to relating code.
+- Resolution choice needs to relate to the Y axist, not the X axis, this way we preserve detail on, backgrounds and skies.
 - Setup fake data dir etc, Test, Testing results into updates for scripts, complete scripts.
 - Mutli-Thread, Upon detect GPUs, have option for select ALL, this would result in workload being split into 2 lists, then individually processed by GPUs at same time in parrallel, additionally, detect how many cores each GPU has, and devide the work further that way, example, RX 470 is 2 core while HD 7850 is 1 core, hence, 3 lists, 2/3 of the work to the RX 470 and 1/3 of the work to the HD 7850.
 
