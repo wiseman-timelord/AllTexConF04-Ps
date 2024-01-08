@@ -1,20 +1,31 @@
 # Script: scrips\processing.ps1
 
+# Initiate Texture Processing
 function InitiateTextureProcessing {
     param (
         [string]$resolution
     )
     $Global:ProcessingStartTime = Get-Date
     $Global:FilesProcessed = 0
+    $Global:FilesPassed = 0
+    $Global:PreviousDataSize = Get-DataSize
 
     $targetResolution = [int]$resolution
     ProcessIndividualTextures -targetResolution $targetResolution
     ProcessCompressedTextureFiles -targetResolution $targetResolution
 
+    $Global:ResultingDataSize = Get-DataSize
     $Global:ProcessingEndTime = Get-Date
 
     # Invoke the summary screen
     DisplaySummaryScreen
+}
+
+function Get-DataSize {
+    $totalSize = 0
+    $totalSize += (Get-ChildItem -Path "$Global:DataDirectory\Textures" -Recurse | Measure-Object -Property Length -Sum).Sum
+    $totalSize += (Get-ChildItem -Path $Global:DataDirectory -Filter "*textures.ba2" | Measure-Object -Property Length -Sum).Sum
+    return $totalSize / 1MB  # Convert to MB
 }
 
 # Texture Info Retrieval
@@ -40,12 +51,14 @@ function ProcessIndividualTextures {
         [int]$targetResolution
     )
     $texturesPath = Join-Path $Global:DataDirectory "Textures"
-    # Hardcoding DdsFilePattern as "*.dds"
     $textures = Get-ChildItem -Path $texturesPath -Filter "*.dds" -Recurse
     foreach ($texture in $textures) {
         $imageInfo = RetrieveTextureDetails -texturePath $texture.FullName
         if ($imageInfo.Width -gt $targetResolution) {
             AdjustTextureSize -texturePath $texture.FullName -targetResolution $targetResolution -format $imageInfo.Format
+            $Global:FilesProcessed += 1
+        } else {
+            $Global:FilesPassed += 1
         }
     }
     Write-Host "Loose Textures Processed"

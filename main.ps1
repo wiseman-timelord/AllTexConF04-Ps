@@ -12,6 +12,10 @@ $Global:SelectedGPU = 0  # Default GPU
 $Global:ProcessingStartTime = $null
 $Global:ProcessingEndTime = $null
 $Global:FilesProcessed = 0
+$Global:FilesPassed = 0
+$Global:PreviousDataSize = 0
+$Global:ResultingDataSize = 0
+
 
 # Imports
 . ".\AllTexConform-Ps\scripts\processing.ps1"
@@ -117,25 +121,32 @@ function CalculateScore {
 
 function DisplaySummaryScreen {
     $processingTime = $Global:ProcessingEndTime - $Global:ProcessingStartTime
-    $score = CalculateScore -texturesProcessed $Global:FilesProcessed -processingTime $processingTime
+    $processingTimeFormatted = "{0:HH:mm}" -f [datetime]$processingTime.TotalSeconds
+    $dataSaved = $Global:PreviousDataSize - $Global:ResultingDataSize
+    $percentReduction = [math]::Round(($dataSaved / $Global:PreviousDataSize) * 100, 2)
 
-    $Global:Config.UserPreviousScore = $Global:Config.UserCurrentHighScore
+    $score = CalculateScore -texturesProcessed $Global:FilesProcessed -processingTime $processingTime
+    $verdict = "Average Score!"
+
     if ($score -gt $Global:Config.UserCurrentHighScore) {
         $Global:Config.UserCurrentHighScore = $score
-        Write-Host "New HighScore!" -ForegroundColor Green
+        $verdict = "New HighScore!"
     }
     elseif ($score -lt $Global:Config.UserCurrentLowScore -or $Global:Config.UserCurrentLowScore -eq 0) {
         $Global:Config.UserCurrentLowScore = $score
-        Write-Host "New LowScore!" -ForegroundColor Red
+        $verdict = "New LowScore!"
     }
 
-    Write-Host "Processing Time: $($processingTime.ToString())"
-    Write-Host "Textures Processed: $($Global:FilesProcessed)"
-    Write-Host "Score: $score"
-    Write-Host "Current High Score: $($Global:Config.UserCurrentHighScore)"
-    Write-Host "Previous Score: $($Global:Config.UserPreviousScore)"
-    Write-Host "Current Low Score: $($Global:Config.UserCurrentLowScore)"
-
+    Show-Title
+    Write-Host "Processing Stats:"
+    Write-Host "Start: $($Global:ProcessingStartTime.ToString('HH:mm')), Duration: $processingTimeFormatted"
+    Write-Host "Processed: $($Global:FilesProcessed), Passed: $($Global:FilesPassed)"
+    Write-Host "Saved: $($dataSaved) MB, Reduction: $percentReduction%"
+    Write-Host "`nResulting Scores:"
+    Write-Host "Current: $score, Previous: $($Global:Config.UserPreviousScore)"
+    Write-Host "Highest: $($Global:Config.UserCurrentHighScore), Lowest: $($Global:Config.UserCurrentLowScore)"
+    Write-Host "`nVerdict:"
+    Write-Host "$verdict"
     PauseMenu
 }
 
