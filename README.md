@@ -24,6 +24,19 @@ AllTexConF04-Ps, designed for Fallout 4, epitomizes efficiency and user-friendli
 - **User-Friendly Interface**: Offers an easy-to-navigate menu system, simplifying the texture processing workflow.
 - **Detailed Output**: Provides comprehensive feedback during processing, including texture names and resolutions.
 
+### PREVIEW
+```
+==================( AllTexConFO4-Ps )==================
+
+1. Set Data Folder Location
+2. Set Max Image Resolution
+3. Set GPU Processor To Use
+0. Begin Image Processing...
+
+Select, Settings=1-3, Begin=0, Exit=X: 
+
+```
+
 ### USAGE
 1. Run `Setup-Install.Bat` to, install required libraries and create program folders.
 2. Run `AllTexConFO4.Bat` to start the script.
