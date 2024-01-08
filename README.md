@@ -2,7 +2,7 @@
 
 ### STATUS: DEVELOPMENT
 Still being created, not even done the basic testing, most of it is figured out and implemented...
-- check and enhance, psd1 integration optimally to assist the recording of progress, listing of files etc.
+- Create summary screen, functions for calculations. display stats: time taken, textures processed, score (textures processed/time taken*10). Current Score, Previous Score, HighScore, LowScore. events: printed text, "New HighScore! (O_o/'" and "New LowScore! (>_<)". Include relevant additions in variables and keys. Pause at end, "Select, Exit Program=X, Error Log=E:", where error log opens ".\Errors-Crash.Log" if it exists, then exits...
 - Setup fake data dir etc, Test, Testing results into updates for scripts, complete scripts.
 - possibilities of timing card(s) to determine effectiveness of each card, even a scoring system like average textures per second x 100, or something, even save to psd1 value, current highscore, previous high score IDK, for fun.
 - data visualization, its for a game, so, why not, could be comical to have some animated ascii characters or someth.
