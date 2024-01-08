@@ -3,9 +3,7 @@
 ### STATUS: DEVELOPMENT
 Still being created, not even done the basic testing, most of it is figured out and implemented...
 - Setup fake data dir etc, Test, Testing results into updates for scripts, complete scripts.
-- possibilities of timing card(s) to determine effectiveness of each card, even a scoring system like average textures per second x 100, or something, even save to psd1 value, current highscore, previous high score IDK, for fun.
 - data visualization, its for a game, so, why not, could be comical to have some animated ascii characters or someth.
-- Compile 7za into a portable single executable, and host on github, then include in downloader, to be able to upload project to Nexus.
 - Mutli-Thread, Upon detect GPUs, have option for select ALL, this would result in workload being split into 2 lists, then individually processed by GPUs at same time in parrallel, additionally, detect how many cores each GPU has, and devide the work further that way, example, RX 470 is 2 core while HD 7850 is 1 core, hence, 3 lists, 2/3 of the work to the RX 470 and 1/3 of the work to the HD 7850. Note, detecting shaders is somewhat impossible.
 
 ### DESCRIPTION
