@@ -70,10 +70,12 @@ Select, Exit Program=X, Error Log=E:
 - Library Requirements installed by `Setup-Installer.Bat`.
 - Git, required by installer for, "7za" and "DirectXTex".
 
-### NOTATION
+### FUTURE
 - 7za is only available on websites in, 7z and msi, format, must compile 7za into a portable single executable, and host on github, then include in Setup-Install.Bat, to be able to upload project to Nexus.
-- Credit to - 7-Zip Team and Microsoft, for relevantly, 7za abd DirectXTex.
+- Compiling TexConv.exe with additonal argument -null or something, to bypass, checking and writing, a file, when given the "texconv.exe filename.dds" command, and instead print default image info, thus removing the requirement of texdiag.exe
 
+### CREDITS
+- Credit to, 7-Zip Team and Microsoft, for relevantly, 7za abd DirectXTex.
 
 ### DISCLAIMER
 This program is provided "as is" without warranties or support. Users are responsible for the content they, download and use, as well as, any resulting damage to, hardware or sanity.
