@@ -41,14 +41,15 @@ Select, Settings=1-3, Begin=0, Exit=X:
 ```
 ==================( AllTexConFO4-Ps )==================
 
-               Processing Time: 00:03:45
-                Textures Processed: 150
-                  Current Score: 6.67
-
-               Current High Score: 8.20
-                 Previous Score: 5.50
-                Current Low Score: 4.75
-
+                   Processing Stats:
+        Start: 22:33 Duration: 03:13, End: 22:46
+             Processed: 57, Passed: 23  
+           Saved: 14.2 MB, Reduction: 9%                  
+				  				  
+				   Resulting Scores: 
+		     Current: 6.67, Previous: 5.50
+              Highest: 8.20, Lowest: 4.75
+              
                        Verdict: 
                   Average Score! (o_o)
 
