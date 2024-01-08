@@ -1,31 +1,28 @@
-# Script main.ps1
+# Script: main.ps1
 
-# Global Variables
+# Variables
 $Global:Config = Import-PowerShellDataFile -Path ".\AllTexConform-Ps\scripts\configuration.psd1"
 $scriptPath = Split-Path -Parent $MyInvocation.MyCommand.Definition
 $Global:ToolsDirectory = $scriptPath
 $Global:BinDirectory = Join-Path $scriptPath "binaries"
 $Global:CacheDirectory = Join-Path $scriptPath "cache"
 $Global:DataDirectory = $Global:Config.DataFolderLocation
-$Global:TargetResolution = 1024  # Default resolution
-$Global:SelectedGPU = 0  # Default GPU
+$Global:TargetResolution = 1024  
+$Global:SelectedGPU = 0  
 $Global:ProcessingStartTime = $null
 $Global:ProcessingEndTime = $null
 $Global:FilesProcessed = 0
 $Global:FilesPassed = 0
 $Global:PreviousDataSize = 0
 $Global:ResultingDataSize = 0
-
-
-# Imports
 . ".\AllTexConform-Ps\scripts\processing.ps1"
 
-# Function to display title
+# Function Show Title
 function Show-Title {
     Write-Host "==================( AllTexConFO4-Ps )=================="
 }
 
-# Main Menu
+# Function Show Mainmenu
 function Show-MainMenu {
     Show-Title
     Write-Host "`nMain Menu`n"
@@ -44,7 +41,7 @@ function Show-MainMenu {
     }
 }
 
-# Data Folder Menu
+# Function Show Datafoldermenu
 function Show-DataFolderMenu {
     Show-Title
     Write-Host "`nFolders Menu`n"
@@ -62,7 +59,7 @@ function Show-DataFolderMenu {
     }
 }
 
-# Resolution Menu
+# Function Show Resolutionmenu
 function Show-ResolutionMenu {
     Show-Title
     Write-Host "`nFormat Menu`n"
@@ -80,14 +77,14 @@ function Show-ResolutionMenu {
     }
 }
 
-# Get GPU List
+# Function Get Gpulist
 function Get-GPUList {
     $texconvOutput = & $Global:TexConvExecutable --help
     $gpuList = $texconvOutput -match "^   [0-9]: VID" -replace '   ', ''
     return $gpuList
 }
 
-# Display GPU Selection
+# Function Show Gpuselectionmenu
 function Show-GPUSelectionMenu {
     Show-Title
     Write-Host "`nGPU Menu`n"
@@ -97,9 +94,7 @@ function Show-GPUSelectionMenu {
         Write-Host $gpu
     }
     Write-Host "M. Return to Main Menu"
-
     $choice = Read-Host "`nSelect, GPU=1-9, Main Menu=M"
-    
     if ($choice -eq 'M') {
         Show-MainMenu
     } elseif ($choice -in $gpuList) {
@@ -110,6 +105,7 @@ function Show-GPUSelectionMenu {
     }
 }
 
+# Function Calculatescore
 function CalculateScore {
     param (
         [int]$texturesProcessed,
@@ -119,15 +115,14 @@ function CalculateScore {
     return [math]::Round(($texturesProcessed / $processingTime.TotalSeconds) * 10, 2)
 }
 
+# Function Displaysummaryscreen
 function DisplaySummaryScreen {
     $processingTime = $Global:ProcessingEndTime - $Global:ProcessingStartTime
     $processingTimeFormatted = "{0:HH:mm}" -f [datetime]$processingTime.TotalSeconds
     $dataSaved = $Global:PreviousDataSize - $Global:ResultingDataSize
     $percentReduction = [math]::Round(($dataSaved / $Global:PreviousDataSize) * 100, 2)
-
     $score = CalculateScore -texturesProcessed $Global:FilesProcessed -processingTime $processingTime
     $verdict = "Average Score!"
-
     if ($score -gt $Global:Config.UserCurrentHighScore) {
         $Global:Config.UserCurrentHighScore = $score
         $verdict = "New HighScore!"
@@ -136,7 +131,6 @@ function DisplaySummaryScreen {
         $Global:Config.UserCurrentLowScore = $score
         $verdict = "New LowScore!"
     }
-
     Show-Title
     Write-Host "Processing Stats:"
     Write-Host "Start: $($Global:ProcessingStartTime.ToString('HH:mm')), Duration: $processingTimeFormatted"
@@ -150,7 +144,7 @@ function DisplaySummaryScreen {
     PauseMenu
 }
 
-
+# Function Pausemenu
 function PauseMenu {
     Write-Host "`nSelect, Exit Program=X, Error Log=E:"
     $choice = Read-Host "Select"
@@ -166,8 +160,5 @@ function PauseMenu {
         default { Write-Host "Invalid option, please try again"; PauseMenu }
     }
 }
-
-
-# Start Script
 Set-Location -Path $scriptPath
 Show-MainMenu
