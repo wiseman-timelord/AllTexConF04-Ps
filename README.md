@@ -4,7 +4,6 @@
 Still being created, not even done the basic testing, most of it is figured out and implemented...
 - check and enhance, psd1 integration optimally to assist the recording of progress, listing of files etc.
 - Setup fake data dir etc, Test, Testing results into updates for scripts, complete scripts.
-- Look into possibilities of multi-gpu processing, utilizing psd1 for splitting file lists.
 - possibilities of timing card(s) to determine effectiveness of each card, even a scoring system like average textures per second x 100, or something, even save to psd1 value, current highscore, previous high score IDK, for fun.
 - data visualization, its for a game, so, why not, could be comical to have some animated ascii characters or someth.
 - Compile 7za into a portable single executable, and host on github, then include in downloader, to be able to upload project to Nexus.
