@@ -25,6 +25,9 @@ AllTexConF04-Ps, designed for Fallout 4, epitomizes efficiency and user-friendli
 ```
 ==================( AllTexConFO4-Ps )==================
 
+
+
+
               1. Set Data Folder Location,
               2. Set Max Image Resolution,
               3. Set GPU Processor To Use,
@@ -32,7 +35,26 @@ AllTexConF04-Ps, designed for Fallout 4, epitomizes efficiency and user-friendli
 
 Select, Settings=1-3, Begin=0, Exit=X: 
 
+
+
 ```
+```
+==================( AllTexConFO4-Ps )==================
+
+Processing Time: 00:03:45
+Textures Processed: 150
+Score: 6.67
+
+Current High Score: 8.20
+Previous Score: 5.50
+Current Low Score: 4.75
+
+Note: 
+Average Score! (o_o)
+
+Select, Exit Program=X, Error Log=E:
+
+````
 
 ### USAGE
 1. Run `Setup-Install.Bat` to, install required libraries and create program folders.
