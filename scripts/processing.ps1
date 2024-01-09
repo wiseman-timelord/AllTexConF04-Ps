@@ -56,7 +56,6 @@ function ProcessIndividualTextures {
     $texturesPath = Join-Path $Global:DataDirectory "Textures"
     $textures = Get-ChildItem -Path $texturesPath -Filter "*.dds" -Recurse
     foreach ($texture in $textures) {
-        Write-Host "$($texture.Name): Analyzing Image Size."
         $imageInfo = RetrieveTextureDetails -texturePath $texture.FullName
         if ($imageInfo.Width -gt $targetResolution) {
             AdjustTextureSize -texturePath $texture.FullName -targetResolution $targetResolution -format $imageInfo.Format
