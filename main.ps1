@@ -135,7 +135,7 @@ function Get-GPUList {
 # Function Show Gpuselectionmenu
 function Show-GPUSelectionMenu {
     Show-Title
-    Write-Host "--------------------------( GPU Menu )-------------------------`n`n`n`n`n`n"
+    Write-Host "--------------------------( GPU Menu )-------------------------`n`n`n`n`n"
     
     $gpuList = Get-GPUList
 
@@ -153,7 +153,7 @@ function Show-GPUSelectionMenu {
         "Not Selected"
     }
     Write-Host "                          Current GPU:"
-    Write-Host "                   $currentGpu`n"
+    Write-Host "                   $currentGpu`n1n"
 
     # Display list of GPUs
     foreach ($gpu in $gpuList) {
