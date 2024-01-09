@@ -2,10 +2,10 @@
 
 ### STATUS: DEVELOPMENT
 Still being created, not even done the basic testing, most of it is figured out and implemented...
-- Fix GPU menus. we will now be filtering information from dxdiag, or some other library, and moving away from using texconv.exe, this way we can decide on a differing tool for downscaling??
+- Check functions are using new variables, `$Global:TexConvExecutable` and `
+$Global:TexDiagExecutable` and `$Global:SelectedGPU`, update as applicable. 
 - Resolution choice needs to relate to the Y axist, not the X axis, this way we preserve detail on, backgrounds and skies.
 - Setup fake data dir etc, Test, Testing results into updates for scripts, complete scripts.
-- Mutli-Thread, Upon detect GPUs, have option for select ALL, this would result in workload being split into 2 lists, then individually processed by GPUs at same time in parrallel, additionally, detect how many cores each GPU has, and devide the work further that way, example, RX 470 is 2 core while HD 7850 is 1 core, hence, 3 lists, 2/3 of the work to the RX 470 and 1/3 of the work to the HD 7850.
 
 ### DESCRIPTION
 AllTexConF04-Ps, designed for Fallout 4, epitomizes efficiency and user-friendliness in Fallout 4 texture processing. It processes both loose and BA2 textures, optimizing them with DX1 or DX7 compression for non-transparent and transparent textures, respectively. AllTexConF04-Ps adjusts resolutions to user selection of, 2048x* or 1024x* or 512x*, maintaining aspect ratios. Its interface is intuitive, and it provides detailed output, including texture names and resolutions. AllTexConF04-Ps is optimized for speed, extracting files from Ba2, then updating the textures folder only back to the original Ba2, instead of re-compressing ba2 files. There are indeed other DDS conversion tools for Fallout 4, but the standout features will be:
@@ -104,9 +104,9 @@ Select, Error Log=E, Exit Program=X:
 
 ### POSSIBILITIES
 - 7za is only available on websites in, 7z and msi, format, must compile 7za into a portable single executable, and host on github, then include in Setup-Install.Bat, to be able to upload project to Nexus.
-- Compiling TexConv.exe with additonal argument -null or something, to bypass, checking and writing, a file, when given the "texconv.exe filename.dds" command, and instead print default image info, thus removing the requirement of texdiag.exe
+- Compiling TexConv.exe with additonal argument -null or something, to bypass, checking and writing, a file, when given the "texconv.exe filename.dds" command, and instead print default image info, thus removing the requirement of texdiag.exe.
 - Use up-to-date libraries for downscaling... For AMD GPUs: Compressonator is a robust choice, offering fast, GPU-accelerated compression and a range of advanced encoding options. For NVIDIA GPUs: NVIDIA's Texture Tools Exporter is the go-to tool, leveraging CUDA acceleration for efficient texture compression. ^_^
-
+- Mutli-Thread, Upon detect GPUs, have option for select ALL, this would result in workload being split into 2 lists, then individually processed by GPUs at same time in parrallel, additionally, detect how many cores each GPU has, and devide the work further that way, example, RX 470 is 2 core while HD 7850 is 1 core, hence, 3 lists, 2/3 of the work to the RX 470 and 1/3 of the work to the HD 7850.
 
 ### CREDITS
 - Credit to, 7-Zip Team and Microsoft, for relevantly, 7za abd DirectXTex.
