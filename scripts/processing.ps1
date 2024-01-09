@@ -83,18 +83,26 @@ function ProcessCompressedTextureFiles {
 function AdjustTextureSize {
     param (
         [string]$texturePath,
-        [int]$targetResolution,
+        [int]$targetHeight, # Changed parameter name for clarity
         [string]$format
     )
     try {
         $imageInfo = RetrieveTextureDetails -texturePath $texturePath
-        & $Global:TexConvExecutable -f $format -fl 11.0 -gpu $Global:SelectedGPU -y -w $targetResolution -h $targetResolution $texturePath
-        Write-Host "$(Split-Path $texturePath -Leaf): Resized $targetResolution x $($imageInfo.Height)-$format."
-        $Global:FilesProcessed += 1
+        if ($imageInfo.Height -gt $targetHeight) {
+            # Calculate new width while maintaining aspect ratio
+            $newWidth = [int]($imageInfo.Width * $targetHeight / $imageInfo.Height)
+            & $Global:TexConvExecutable -f $format -fl 11.0 -gpu $Global:SelectedGPU -y -w $newWidth -h $targetHeight $texturePath
+            Write-Host "$(Split-Path $texturePath -Leaf): Resized $newWidth x $targetHeight-$format."
+            $Global:FilesProcessed += 1
+        } else {
+            Write-Host "$($texture.Name): Dimensions Compliant."
+            $Global:FilesPassed += 1
+        }
     } catch {
         Write-Error "Resizing Failed for $texturePath"
     }
 }
+
 
 # Function Repackagetexturesintoba2
 function RepackageTexturesIntoBA2 {
