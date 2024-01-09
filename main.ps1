@@ -153,7 +153,7 @@ function Show-GPUSelectionMenu {
         "Not Selected"
     }
     Write-Host "                          Current GPU:"
-    Write-Host "                   $currentGpu`n1n"
+    Write-Host "                   $currentGpu`n`n"
 
     # Display list of GPUs
     foreach ($gpu in $gpuList) {
