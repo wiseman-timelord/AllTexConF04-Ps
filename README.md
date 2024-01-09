@@ -57,15 +57,12 @@ Select, Settings=1-3, Begin=B, Exit=X:
 18:45: Texture Processing Started...
 
 Loose Texture Processing...
-Image1.dds: Analyzing Image Size.
 Image1.dds: Resized 1024x512-BC3.
 ...Loose Textures Processed.
 
 Ba2 Texture Processling...
 TexturesArchive1.ba2: Unpacking Contents.
-Image4.dds: Analyzing Image Size.
 Image4.dds: Dimensions Compliant.
-Image5.dds: Analyzing Image Size.
 Image5.dds: Resized 1024x1024-BC3.
 TexturesArchive1.ba2: Contents RePackaged.
 ...Ba2 Files Processed.
