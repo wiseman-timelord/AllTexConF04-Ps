@@ -54,6 +54,38 @@ Select, Settings=1-3, Begin=B, Exit=X:
 
 ```
 ```
+
+======================( AllTexConFO4-Ps )======================
+--------------------------( GPU Menu )-------------------------
+
+
+
+
+
+
+                          Current GPU:
+                   Radeon (TM) RX 470 Graphics
+
+
+                1: Radeon (TM) RX 470 Graphics
+
+                2: AMD Radeon HD 7800 Series
+
+                3: Microsoft Basic Render Driver
+
+                    M. Return To Main Menu
+
+
+
+
+
+
+
+---------------------------------------------------------------
+Select, GPU Choice=1-3, Main Menu=M:
+
+```
+```
 18:45: Texture Processing Started...
 
 Loose Texture Processing...
