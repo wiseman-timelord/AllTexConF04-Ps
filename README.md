@@ -2,9 +2,9 @@
 
 ### STATUS: DEVELOPMENT
 Still being created, not even done the basic testing, most of it is figured out and implemented...
-- Check functions are using new variables, `$Global:TexConvExecutable` and `
-$Global:TexDiagExecutable` and `$Global:SelectedGPU`, update as applicable. 
-- Resolution choice needs to relate to the Y axist, not the X axis, this way we preserve detail on, backgrounds and skies.
+- Check Menus are all layed out as intended.
+- fix the integrity check in the batch.
+- Do a once over on all the scripts, make sure everything is seemingly ok, then try do some improvements. 
 - Setup fake data dir etc, Test, Testing results into updates for scripts, complete scripts.
 
 ### DESCRIPTION
