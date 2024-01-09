@@ -133,12 +133,18 @@ function Get-GPUList {
 }
 
 # Function Show Gpuselectionmenu
-# Function Show Gpuselectionmenu
 function Show-GPUSelectionMenu {
     Show-Title
-    Write-Host "--------------------------( GPU Menu )-------------------------`n"
+    Write-Host "--------------------------( GPU Menu )-------------------------`n`n`n`n`n`n"
     
     $gpuList = Get-GPUList
+
+    # Calculate spacer lines before and after GPU list
+    $spacerLinesBefore = [math]::Max(0, 2 - $gpuList.Count)
+    $spacerLinesAfter = 4 - $spacerLinesBefore - $gpuList.Count
+
+    # Print spacer lines before GPU list
+    Write-Host ("`n" * $spacerLinesBefore)
 
     # Display current GPU
     $currentGpu = if ($Global:SelectedGPU -ge 0 -and $Global:SelectedGPU -lt $gpuList.Count) {
@@ -146,14 +152,18 @@ function Show-GPUSelectionMenu {
     } else {
         "Not Selected"
     }
-    Write-Host "`n                          Current GPU:"
-    Write-Host "                   $currentGpu`n`n"
+    Write-Host "                          Current GPU:"
+    Write-Host "                   $currentGpu`n"
 
     # Display list of GPUs
     foreach ($gpu in $gpuList) {
         Write-Host "                $gpu`n"
     }
-    Write-Host "                    M. Return To Main Menu`n`n"
+    Write-Host "                    M. Return To Main Menu`n`n`n`n`n"
+
+    # Print spacer lines after GPU list
+    Write-Host ("`n" * $spacerLinesAfter)
+
     Show-Divider
     $choice = Read-Host "Select, GPU Choice=1-$($gpuList.Count), Main Menu=M"
 
@@ -171,6 +181,7 @@ function Show-GPUSelectionMenu {
         Show-GPUSelectionMenu
     }
 }
+
 
 
 
