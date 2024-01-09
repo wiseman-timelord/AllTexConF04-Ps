@@ -2,7 +2,7 @@
 
 ### STATUS: DEVELOPMENT
 Still being created, not even done the basic testing, most of it is figured out and implemented...
-- Check Menus are all layed out as intended.
+- Check Menus are all layed out as intended. Idea, try make mega menu, where all options are showing current value, and all possible values are known (such as for the gpu detection), so the user can toggle through the options, then the menu is re-drawn with new current value shown..........! Thus having one configuration menu.
 - Do a once over on all the scripts, make sure everything is seemingly ok, then try do some improvements. 
 - Setup fake data dir etc, Test, Testing results into updates for scripts, complete scripts.
 
