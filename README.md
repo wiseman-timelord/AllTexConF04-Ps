@@ -25,7 +25,7 @@ BethDdsScale-Ps, designed for Modern Bethesda games for, Textures and Archives, 
 - **User-Friendly Interface**: Offers an easy-to-navigate menu system, simplifying the texture processing workflow.
 - **Detailed Output**: Provides comprehensive feedback during processing, including texture names and resolutions.
 - **Brown Faces Fix**: A comprihensive character assets avoidance option, that will bypass processing on troublesome items.
-- **Multi-Thread BSArch**: Menu toggle for archiving of Bsa/Ba2 files in multi-thread, probably CPU, no idea how many thread it uses.
+- **Multi-Thread BSArch**: Menu toggle for archiving of Bsa/Ba2 files in multi-thread, it will use all CPU threads available.
 
 ### PREVIEW
 ```
