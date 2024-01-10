@@ -18,7 +18,7 @@ BethDdsScale-Ps, designed for Modern Bethesda games for, Textures and Archives, 
 ### FEATURES
 - **Resolution Adjustment**: Dynamically scales textures exceeding a target resolution, maintaining aspect ratio.
 - **Format Conversion**: Intelligently converts textures to DirectX formats, considering transparency.
-- **BA2 Archive Compatibility**: Processes textures within `.ba2` files, extracting, converting, and repacking efficiently.
+- **BSArch Archive Compatibility**: Processes textures within, `.ba` and `.ba2`, files, extracting, converting, and repacking efficiently.
 - **GPU Selection**: Leverages the power of specified GPUs, enhancing processing speed and efficiency.
 - **User-Friendly Interface**: Offers an easy-to-navigate menu system, simplifying the texture processing workflow.
 - **Detailed Output**: Provides comprehensive feedback during processing, including texture names and resolutions.
