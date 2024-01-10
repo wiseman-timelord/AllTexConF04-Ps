@@ -19,26 +19,23 @@ $Global:FilesProcessed = 0
 $Global:FilesPassed = 0
 $Global:PreviousDataSize = 0
 $Global:ResultingDataSize = 0
+
+# Imports
 . ".\scripts\processing.ps1"
 . ".\scripts\preferences.ps1"
 . ".\scripts\artwork.ps1"
 
-# Function Show-ConfigurationMenu
+# Function Show Configurationmenu
 function Show-ConfigurationMenu {
     do {
         Clear-Host
 		Show-AsciiArt
 		Show-Title
         Write-Host "             ---( Pre-Processing Configuration )---`n`n"
-        # Data Folder Location
         Write-Host "                    1. Data Folder Location"
         Write-Host "     $($Global:DataDirectory)`n"
-
-        # Max Image Resolution
         Write-Host "                    2. Max Image Resolution"
         Write-Host "                           RATIOx$($Global:TargetResolution)`n"
-
-        # GPU Processor
         Write-Host "                     3. Graphics Processor"
         if ($Global:GpuList.Count -gt 0) {
             $currentGpuDisplay = $Global:GpuList[$Global:SelectedGPU].Split(':')[1].Trim()
@@ -46,14 +43,10 @@ function Show-ConfigurationMenu {
             $currentGpuDisplay = "No GPU Found"
         }
         Write-Host "                  $currentGpuDisplay`n"
-
-        # Processing and Exit Options
         Write-Host "                      B. Begin Processing"
 		Write-Host "                   (Ensure Correct Settings!!)`n"
 		Write-Host "                        X. Exit Program`n`n`n"
         Show-Divider
-
-        # Process choice
         $choice = Read-Host "Select, Menu Options=1-3, Begin Resizing=B, Exit Program=X"
         switch ($choice) {
             "1" { Update-DataFolderLocation }
@@ -68,7 +61,6 @@ function Show-ConfigurationMenu {
 
 # Function Displaysummaryscreen
 function DisplaySummaryScreen {
-    # Summary Screen Logic
     $processingTime = $Global:ProcessingEndTime - $Global:ProcessingStartTime
     $processingTimeFormatted = "{0:HH:mm}" -f [datetime]$processingTime.TotalSeconds
     $dataSaved = $Global:PreviousDataSize - $Global:ResultingDataSize
@@ -96,8 +88,6 @@ function DisplaySummaryScreen {
     Write-Host "Highest: $($Global:Config.UserCurrentHighScore), Lowest: $($Global:Config.UserCurrentLowScore)"
     Write-Host "`nVerdict:"
     Write-Host "$verdict"
-
-    # Pause Menu Logic
     Show-Divider
     Write-Host "`nSelect, Exit Program=X, Error Log=E"
     $choice = Read-Host "Select"
@@ -114,7 +104,7 @@ function DisplaySummaryScreen {
     }
 }
 
-# Main Entry
+# Entry Point
 Set-Location -Path $scriptPath
 $Global:GpuList = Get-GPUList
 Show-ConfigurationMenu

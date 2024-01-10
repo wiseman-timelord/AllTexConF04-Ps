@@ -1,4 +1,4 @@
-# Script: scripts\processing.ps1
+# Script: processing.ps1
 
 # Function Initiatetextureprocessing
 function InitiateTextureProcessing {
@@ -83,13 +83,12 @@ function ProcessCompressedTextureFiles {
 function AdjustTextureSize {
     param (
         [string]$texturePath,
-        [int]$targetHeight, # Changed parameter name for clarity
+        [int]$targetHeight, 
         [string]$format
     )
     try {
         $imageInfo = RetrieveTextureDetails -texturePath $texturePath
         if ($imageInfo.Height -gt $targetHeight) {
-            # Calculate new width while maintaining aspect ratio
             $newWidth = [int]($imageInfo.Width * $targetHeight / $imageInfo.Height)
             & $Global:TexConvExecutable -f $format -fl 11.0 -gpu $Global:SelectedGPU -y -w $newWidth -h $targetHeight $texturePath
             Write-Host "$(Split-Path $texturePath -Leaf): Resized $newWidth x $targetHeight-$format."
@@ -102,7 +101,6 @@ function AdjustTextureSize {
         Write-Error "Resizing Failed for $texturePath"
     }
 }
-
 
 # Function Repackagetexturesintoba2
 function RepackageTexturesIntoBA2 {

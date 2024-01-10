@@ -1,14 +1,18 @@
-# Script: scripts\preferences.ps1
+# Script: preferences.ps1
 
+# Function Update Datafolderlocation
 function Update-DataFolderLocation {
     $newDataFolder = Read-Host "Enter New Location, or N for no update"
     if ($newDataFolder -ne 'N') {
         $Global:DataDirectory = $newDataFolder
         $Global:Config.DataFolderLocation = $newDataFolder
+
+# Variables
 		$Global:Config | Export-PowerShellDataFile -Path ".\scripts\configuration.psd1"
     }
 }
 
+# Function Toggle Imageresolution
 function Toggle-ImageResolution {
     $currentIndex = $Global:AvailableResolutions.IndexOf($Global:TargetResolution)
     $nextIndex = ($currentIndex + 1) % $Global:AvailableResolutions.Count
@@ -17,7 +21,7 @@ function Toggle-ImageResolution {
     $Global:Config | Export-PowerShellDataFile -Path ".\scripts\configuration.psd1"
 }
 
-
+# Function Toggle Gpuselection
 function Toggle-GPUSelection {
     $currentSelection = $Global:SelectedGPU
     $nextSelection = ($currentSelection + 1) % $Global:GpuList.Count
@@ -28,25 +32,18 @@ function Toggle-GPUSelection {
 
 # Function Get Gpulist
 function Get-GPUList {
-    # Execute TexConvExecutable
     $texconvOutput = & $Global:TexConvExecutable
     if (-not $texconvOutput) {
         Write-Error "Failed to execute TexConvExecutable or no output captured."
         return @()
     }
-
-    # Convert output to an array of lines
     $lines = $texconvOutput -split "`r`n"
-
-    # Find the index of the line containing '<adapter>:' with indentation
     $adapterLineMatch = $lines | Select-String "^\s*<adapter>:" | Select-Object -First 1
     if (-not $adapterLineMatch) {
         Write-Error "No '<adapter>:' line found in output."
         return @()
     }
     $adapterLineIndex = $adapterLineMatch.LineNumber - 1
-
-    # Extract GPU information lines and format them
     $gpuList = @()
     for ($i = $adapterLineIndex + 1; $i -lt $lines.Length; $i++) {
         $line = $lines[$i]
@@ -56,11 +53,9 @@ function Get-GPUList {
             $formattedLine = "{0}: {1}" -f $gpuNumber, $gpuInfo
             $gpuList += $formattedLine
         } elseif ($line.Trim() -eq "") {
-            # Break the loop if a blank line is encountered
             break
         }
     }
-
     return $gpuList
 }
 

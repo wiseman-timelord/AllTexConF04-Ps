@@ -1,16 +1,16 @@
-# Script: scripts\artwork.ps1
+# Script: artwork.ps1
 
 # Function Show Title
 function Show-Title {
     Write-Host "`n======================( DdsBa2Resize-Ps )======================`n"
 }
 
-# Function Divider
+# Function Show Divider
 function Show-Divider {
 	Write-Host "---------------------------------------------------------------"
 }
 
-# Function AsciiArt
+# Function Show Asciiart
 function Show-AsciiArt {
     $asciiArt = @"
    ____      _     ____        ____  ____           _         
