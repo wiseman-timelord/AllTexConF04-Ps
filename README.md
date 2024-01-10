@@ -101,7 +101,7 @@ Select, Error Log=E, Exit Program=X:
 ````
 
 ### USAGE
-1. Run `Setup-Install.Bat` to, install required libraries and create program folders, this is a web-install, so ensure to allow `Setup-Installer.Bat` through firewall first, or you may have to run it again if you have popups for rules.
+1. Run `Setup-Install.Bat` to, install required libraries and create program folders, this is a web-install, so ensure to allow `Setup-Install.Bat` through firewall first, or you may have to run it again if you have popups for rules.
 2. Run `DdsBethScale.Bat` to start the script.
 3. Select your preferences, game\data location, character assets, desired max resolution, GPU processor.
 4. Press `b` to Begin, and set the scripts process the textures in your `Data` directory.
