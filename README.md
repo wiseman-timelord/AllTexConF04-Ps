@@ -2,7 +2,6 @@
 
 ### STATUS: DEVELOPMENT
 Still being created, not even done the basic testing, most of it is figured out and implemented...
-- Update BAtch installer.
 - Update processing.ps1 to use bsarch instead of 7za.
 - Test out the new blinging pre-processing configuration menu, fix issues..
 - Make the program actually, point to and work from, the data folder, instead of fallout 4/game folder or whatever is current, this way compatible with other games with dds/ba2 data folder.
