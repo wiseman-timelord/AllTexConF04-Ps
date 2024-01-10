@@ -10,6 +10,7 @@ $Global:TexDiagExecutable = Join-Path $Global:BinDirectory "texdiag.exe"
 $Global:CacheDirectory = Join-Path $scriptPath "cache"
 $Global:DataDirectory = $Global:Config.DataFolderLocation
 $Global:SelectedGPU = $Global:Config.GpuCardSelectionNumber
+$Global:AvailableResolutions = @(512, 1024, 2048)
 $Global:TargetResolution = 1024  
 $Global:SelectedGPU = 0  
 $Global:ProcessingStartTime = $null
@@ -19,184 +20,55 @@ $Global:FilesPassed = 0
 $Global:PreviousDataSize = 0
 $Global:ResultingDataSize = 0
 . ".\scripts\processing.ps1"
+. ".\scripts\preferences.ps1"
+. ".\scripts\artwork.ps1"
 
-# Function Show Title
-function Show-Title {
-    Clear-Host
-	Write-Host "`n======================( AllTexConFO4-Ps )======================"
-}
+# Function Show-ConfigurationMenu
+function Show-ConfigurationMenu {
+    do {
+        Clear-Host
+		Show-AsciiArt
+		Show-Title
+        Write-Host "             ---( Pre-Processing Configuration )---`n`n"
+        # Data Folder Location
+        Write-Host "                    1. Data Folder Location"
+        Write-Host "     $($Global:DataDirectory)`n"
 
-# Function Divider
-function Show-Divider {
-	Write-Host "---------------------------------------------------------------"
-}
+        # Max Image Resolution
+        Write-Host "                    2. Max Image Resolution"
+        Write-Host "                           RATIOx$($Global:TargetResolution)`n"
 
-# Function Show Mainmenu
-function Show-MainMenu {
-    Show-Title
-    Write-Host "-------------------------( Main Menu )-------------------------`n`n`n`n`n`n`n`n"
-    Write-Host "                 1. Set Data Folder Location,`n"
-    Write-Host "                 2. Set Max Image Resolution,`n"
-    Write-Host "                 3. Set GPU Processor To Use,`n"
-    Write-Host "                 B. Begin Processing Textures,`n"
-    Write-Host "                       X. Exit Program.`n`n`n`n`n`n`n"
-	Show-Divider
-    $choice = Read-Host "Select, Settings=1-3, Begin=B, Exit=X"
-    switch ($choice) {
-        "1" { Show-DataFolderMenu }
-        "2" { Show-ResolutionMenu }
-        "3" { Show-GPUSelectionMenu }
-        "B" { InitiateTextureProcessing $Global:TargetResolution }
-        "X" { Write-Host "Exiting..."; return }
-        default { Write-Host "Invalid option, please try again"; Show-MainMenu }
-    }
-}
-
-# Function Show Datafoldermenu
-function Show-DataFolderMenu {
-    Show-Title
-    $dataFolderDisplay = if ($Global:DataDirectory.Length -le 58) { $Global:DataDirectory.PadLeft(($Global:DataDirectory.Length + 58) / 2) } else { $Global:DataDirectory }
-    Write-Host "-----------------------( Folders Menu )------------------------`n`n`n`n`n`n`n`n`n"
-    Write-Host "                    Fallout 4\Data Location:`n    $dataFolderDisplay`n"
-    Write-Host "                     1. Enter New Location`n"
-    Write-Host "                     M. Return To Main Menu`n`n`n`n`n`n`n`n`n"
-    Show-Divider
-	$choice = Read-Host "`nSelect, Options 1, Main Menu=M"
-    switch ($choice) {
-        "1" { 
-            $newDataFolder = Read-Host "Enter the absolute path to the Fallout 4 Data Directory"
-            $Global:Config.DataFolderLocation = $newDataFolder
-            $Global:DataDirectory = $newDataFolder
+        # GPU Processor
+        Write-Host "                     3. Graphics Processor"
+        if ($Global:GpuList.Count -gt 0) {
+            $currentGpuDisplay = $Global:GpuList[$Global:SelectedGPU].Split(':')[1].Trim()
+        } else {
+            $currentGpuDisplay = "No GPU Found"
         }
-        "M" { Show-MainMenu }
-        default { Write-Host "Invalid option, please try again"; Show-DataFolderMenu }
-    }
-}
+        Write-Host "                  $currentGpuDisplay`n"
 
-# Function Show Resolutionmenu
-function Show-ResolutionMenu {
-    Show-Title
-    Write-Host "------------------------( Format Menu )------------------------`n`n`n`n`n`n`n"
-    Write-Host "                      Current Resolution:"
-	Write-Host "                             *x$($Global:TargetResolution)`n"
-    Write-Host "                   1. Set Max Res To *x512`n"
-    Write-Host "                   2. Set Max Res To *x1024`n"
-    Write-Host "                   3. Set Max Res To *x2048`n"
-    Write-Host "                    M. Return To Main Menu`n`n`n`n`n`n`n"
-    Show-Divider
-	$choice = Read-Host "`nSelect, Options 1-3, Main Menu=M"
-    switch ($choice) {
-        "1" { $Global:TargetResolution = 512; Show-ResolutionMenu }
-        "2" { $Global:TargetResolution = 1024; Show-ResolutionMenu }
-        "3" { $Global:TargetResolution = 2048; Show-ResolutionMenu }
-        "M" { Show-MainMenu }
-        default { Write-Host "Invalid option, please try again"; Show-ResolutionMenu }
-    }
-}
+        # Processing and Exit Options
+        Write-Host "                      B. Begin Processing"
+		Write-Host "                   (Ensure Correct Settings!!)`n"
+		Write-Host "                        X. Exit Program`n`n`n"
+        Show-Divider
 
-# Function Get Gpulist
-function Get-GPUList {
-    # Execute TexConvExecutable
-    $texconvOutput = & $Global:TexConvExecutable
-    if (-not $texconvOutput) {
-        Write-Error "Failed to execute TexConvExecutable or no output captured."
-        return @()
-    }
-
-    # Convert output to an array of lines
-    $lines = $texconvOutput -split "`r`n"
-
-    # Find the index of the line containing '<adapter>:' with indentation
-    $adapterLineMatch = $lines | Select-String "^\s*<adapter>:" | Select-Object -First 1
-    if (-not $adapterLineMatch) {
-        Write-Error "No '<adapter>:' line found in output."
-        return @()
-    }
-    $adapterLineIndex = $adapterLineMatch.LineNumber - 1
-
-    # Extract GPU information lines and format them
-    $gpuList = @()
-    for ($i = $adapterLineIndex + 1; $i -lt $lines.Length; $i++) {
-        $line = $lines[$i]
-        if ($line -match "^\s*(\d+): VID:\w+, PID:\w+ - (.+)") {
-            $gpuNumber = [int]($matches[1]) + 1
-            $gpuInfo = $matches[2].Trim()
-            $formattedLine = "{0}: {1}" -f $gpuNumber, $gpuInfo
-            $gpuList += $formattedLine
-        } elseif ($line.Trim() -eq "") {
-            # Break the loop if a blank line is encountered
-            break
+        # Process choice
+        $choice = Read-Host "Select, Menu Options=1-3, Begin Resizing=B, Exit Program=X"
+        switch ($choice) {
+            "1" { Update-DataFolderLocation }
+            "2" { Toggle-ImageResolution }
+            "3" { Toggle-GPUSelection }
+            "B" { InitiateTextureProcessing $Global:TargetResolution; break }
+            "X" { Write-Host "Exiting..."; return }
+            default { Write-Host "Invalid option, please try again" }
         }
-    }
-
-    return $gpuList
-}
-
-# Function Show Gpuselectionmenu
-function Show-GPUSelectionMenu {
-    Show-Title
-    Write-Host "--------------------------( GPU Menu )-------------------------`n`n`n`n`n"
-    
-    $gpuList = Get-GPUList
-
-    # Calculate spacer lines before and after GPU list
-    $spacerLinesBefore = [math]::Max(0, 2 - $gpuList.Count)
-    $spacerLinesAfter = 4 - $spacerLinesBefore - $gpuList.Count
-
-    # Print spacer lines before GPU list
-    Write-Host ("`n" * $spacerLinesBefore)
-
-    # Display current GPU
-    $currentGpu = if ($Global:SelectedGPU -ge 0 -and $Global:SelectedGPU -lt $gpuList.Count) {
-        $gpuList[$Global:SelectedGPU].Split(':')[1].Trim()
-    } else {
-        "Not Selected"
-    }
-    Write-Host "                          Current GPU:"
-    Write-Host "                   $currentGpu`n`n"
-
-    # Display list of GPUs
-    foreach ($gpu in $gpuList) {
-        Write-Host "                $gpu`n"
-    }
-    Write-Host "                    M. Return To Main Menu`n`n`n`n`n"
-
-    # Print spacer lines after GPU list
-    Write-Host ("`n" * $spacerLinesAfter)
-
-    Show-Divider
-    $choice = Read-Host "Select, GPU Choice=1-$($gpuList.Count), Main Menu=M"
-
-    # Process selection
-    if ($choice -eq 'M') {
-        Show-MainMenu
-    } elseif ($choice -in (1..$gpuList.Count)) {
-        $Global:SelectedGPU = $choice - 1 # Adjust to zero-based index
-        # Update configuration file
-        $Global:Config.GpuCardSelectionNumber = $Global:SelectedGPU
-        $Global:Config | Export-PowerShellDataFile -Path ".\scripts\configuration.psd1"
-        Show-MainMenu
-    } else {
-        Write-Host "Invalid option, please try again"
-        Show-GPUSelectionMenu
-    }
-}
-
-
-
-
-# Function Calculatescore
-function CalculateScore {
-    param (
-        [int]$texturesProcessed,
-        [TimeSpan]$processingTime
-    )
-    if ($processingTime.TotalSeconds -eq 0) { return 0 }
-    return [math]::Round(($texturesProcessed / $processingTime.TotalSeconds) * 10, 2)
+    } while ($true)
 }
 
 # Function Displaysummaryscreen
 function DisplaySummaryScreen {
+    # Summary Screen Logic
     $processingTime = $Global:ProcessingEndTime - $Global:ProcessingStartTime
     $processingTimeFormatted = "{0:HH:mm}" -f [datetime]$processingTime.TotalSeconds
     $dataSaved = $Global:PreviousDataSize - $Global:ResultingDataSize
@@ -211,8 +83,10 @@ function DisplaySummaryScreen {
         $Global:Config.UserCurrentLowScore = $score
         $verdict = "New LowScore!"
     }
+	Clear-Host
+	Show-AsciiArt
     Show-Title
-	Write-Host "-----------------------( Final Summary )-----------------------"
+    Write-Host "-----------------------( Final Summary )-----------------------"
     Write-Host "Processing Stats:"
     Write-Host "Start: $($Global:ProcessingStartTime.ToString('HH:mm')), Duration: $processingTimeFormatted"
     Write-Host "Processed: $($Global:FilesProcessed), Passed: $($Global:FilesPassed)"
@@ -222,13 +96,10 @@ function DisplaySummaryScreen {
     Write-Host "Highest: $($Global:Config.UserCurrentHighScore), Lowest: $($Global:Config.UserCurrentLowScore)"
     Write-Host "`nVerdict:"
     Write-Host "$verdict"
-    PauseMenu
-}
 
-# Function Pausemenu
-function PauseMenu {
+    # Pause Menu Logic
     Show-Divider
-	Write-Host "`nSelect, Exit Program=X, Error Log=E"
+    Write-Host "`nSelect, Exit Program=X, Error Log=E"
     $choice = Read-Host "Select"
     switch ($choice) {
         "X" { Write-Host "Exiting..."; return }
@@ -239,10 +110,11 @@ function PauseMenu {
                 Write-Host "Error log file does not exist."
             }
         }
-        default { Write-Host "Invalid option, please try again"; PauseMenu }
+        default { Write-Host "Invalid option, please try again"; DisplaySummaryScreen }
     }
 }
 
 # Main Entry
 Set-Location -Path $scriptPath
-Show-MainMenu
+$Global:GpuList = Get-GPUList
+Show-ConfigurationMenu
