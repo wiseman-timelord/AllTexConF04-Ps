@@ -51,7 +51,7 @@ $charTextureStatus = if ($Global:ProcessCharacterTextures) { "Process" } else { 
         Write-Host "                  $currentGpuDisplay`n"
         $archiveMultiThreadStatus = if ($Global:ArchiveMultithreading) { "Multi-Thread" } else { "Single-Thread" }
     Write-Host "                    5. Multi-Thread Archiving"
-    Write-Host "                           $archiveMultiThreadStatus`n`n`n"
+    Write-Host "                           $archiveMultiThreadStatus`n`n"
     ...
         Show-Divider
         $choice = Read-Host "Select, Menu Options=1-3, Begin Resizing=B, Exit Program=X"
