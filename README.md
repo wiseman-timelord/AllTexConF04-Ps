@@ -5,6 +5,7 @@ Still being created, not even done the basic testing, most of it is figured out 
 - Test out the new blinging pre-processing configuration menu, fix issues..
 - Make the program actually point to the data folder, instead of fallout 4 or whatever is current, this way compatible with other programs with the data folder.
 - Idea, Make the program search for all dds in data folder, not just textures folder.
+- Option on menu toggle character assets bypass/process (textures\Actors\Character).
 - Do a once over on all the scripts, make sure everything is seemingly ok, then try do some improvements. 
 - Setup fake data dir etc, Test, Testing results into updates for scripts, complete scripts.
 
@@ -117,6 +118,9 @@ Select, Error Log=E, Exit Program=X:
 - Compiling TexConv.exe with additonal argument -null or something, to bypass, checking and writing, a file, when given the "texconv.exe filename.dds" command, and instead print default image info, thus removing the requirement of texdiag.exe.
 - Use up-to-date libraries for downscaling... For AMD GPUs: Compressonator is a robust choice, offering fast, GPU-accelerated compression and a range of advanced encoding options. For NVIDIA GPUs: NVIDIA's Texture Tools Exporter is the go-to tool, leveraging CUDA acceleration for efficient texture compression. ^_^
 - Mutli-Thread, Upon detect GPUs, have option for select ALL, this would result in workload being split into 2 lists, then individually processed by GPUs at same time in parrallel, additionally, detect how many cores each GPU has, and devide the work further that way, example, RX 470 is 2 core while HD 7850 is 1 core, hence, 3 lists, 2/3 of the work to the RX 470 and 1/3 of the work to the HD 7850.
+
+### NOTATION
+- As for Brown faces bug in fallout 4, I get brown faces even without re-sizing, its a bug they never fixed, as far as I am concerned, however, I believe it is to do with changing the compression level on certain textures to do with, makeup layers and head textures, DdsBa2Resize will, note the compression level and apply the same compression level after, for each texture.  
 
 ### CREDITS
 - Credit to, 7-Zip Team and Microsoft, for relevantly, 7za abd DirectXTex.
