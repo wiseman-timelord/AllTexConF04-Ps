@@ -12,13 +12,14 @@ echo.
 timeout /t 2 /nobreak >nul
 setlocal
 
-:: Set directories
+:: Set Locations
 set "SCRIPT_DIR=%~dp0"
 set "BINARIES_DIR=%SCRIPT_DIR%binaries"
 set "CACHE_DIR=%SCRIPT_DIR%cache"
 set "TEXDIAG_URL=https://github.com/microsoft/DirectXTex/releases/download/dec2023/texdiag.exe"
 set "TEXCONV_URL=https://github.com/microsoft/DirectXTex/releases/download/dec2023/texconv.exe"
-set "GIT_7ZA_URL=https://github.com/aaubertsolutions/7za.git"
+set "SevenZipR_URL=https://www.7-zip.org/a/7zr.exe"
+set "BSARCH_URL=https://github.com/TES5Edit/TES5Edit/releases/download/xedit-4.1.5/xEdit.4.1.5.EXPERIMENTAL.7z"
 
 :: Create directories
 echo Creating directories...
@@ -44,27 +45,31 @@ echo ...DirectXTex Installed.
 echo.
 timeout /t 1 >nul
 
-:: Clone 7za
-echo Downloading 7za...
-pushd "%CACHE_DIR%"
-git clone "%GIT_7ZA_URL%" 7za
-if %errorlevel% neq 0 (
-    echo 7za clone failed
-    popd
-    pause
-    exit /b 1
-)
-popd
-echo ...7za Package Downloaded.
+:: Download 7zr
+echo Downloading 7zr...
+powershell -Command "Invoke-WebRequest -Uri '%SevenZipR_URL%' -OutFile '%CACHE_DIR%\7zr.exe'"
+echo ...7zr Downloaded.
 echo.
 timeout /t 1 >nul
 
-:: Copy 7za files
-echo Copying 7za files...
-copy "%CACHE_DIR%\7za\7za.exe" "%BINARIES_DIR%\7za.exe"
-copy "%CACHE_DIR%\7za\7za.dll" "%BINARIES_DIR%\7za.dll"
-copy "%CACHE_DIR%\7za\7zxa.dll" "%BINARIES_DIR%\7zxa.dll"
-echo ...7za Installed.
+:: Download BSArch
+echo Downloading BSArch...
+powershell -Command "Invoke-WebRequest -Uri '%BSARCH_URL%' -OutFile '%CACHE_DIR%\xEdit.4.1.5.EXPERIMENTAL.7z'"
+echo ...BSArch Downloaded.
+echo.
+timeout /t 1 >nul
+
+:: Unpack BSArch
+echo Unpacking BSArch...
+"%CACHE_DIR%\7zr.exe" x "%CACHE_DIR%\xEdit.4.1.5.EXPERIMENTAL.7z" -o"%CACHE_DIR%" BSArch64.exe
+echo ...BSArch Unpacked.
+echo.
+timeout /t 1 >nul
+
+:: Copy BSArch files
+echo Copying BSArch files...
+move /Y "%CACHE_DIR%\BSArch64.exe" "%BINARIES_DIR%\BSArch64.exe"
+echo ...BSArch Installed.
 echo.
 timeout /t 1 >nul
 

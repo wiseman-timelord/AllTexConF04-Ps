@@ -2,7 +2,7 @@
 
 # Function Show Title
 function Show-Title {
-    Write-Host "`n======================( DdsBa2Resize-Ps )======================`n"
+    Write-Host "`n======================( BethDdsScale-Ps )======================`n"
 }
 
 # Function Show Divider

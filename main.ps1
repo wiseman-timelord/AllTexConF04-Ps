@@ -35,9 +35,9 @@ function Show-ConfigurationMenu {
         Write-Host "             ---( Pre-Processing Configuration )---`n`n`n"
         Write-Host "                    1. Data Folder Location"
         Write-Host "  $($Global:DataDirectory)`n"
-        Write-Host "                    2. Character Textures"
+        Write-Host "                  2. Textures\Actors\Character"
 $charTextureStatus = if ($Global:ProcessCharacterTextures) { "Process" } else { "Ignore" }
-Write-Host "                            $charTextureStatus`n"
+        Write-Host "                           $charTextureStatus`n"
         Write-Host "                    3. Max Image Resolution"
         Write-Host "                           RATIOx$($Global:TargetResolution)`n"
         Write-Host "                     4. Graphics Processor"
