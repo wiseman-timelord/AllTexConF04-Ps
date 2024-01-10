@@ -12,6 +12,13 @@ function Update-DataFolderLocation {
     }
 }
 
+# Function Toggle CharacterTextures
+function Toggle-CharacterTextures {
+    $Global:ProcessCharacterTextures = -not $Global:ProcessCharacterTextures
+    $Global:Config.ProcessCharacterTextures = $Global:ProcessCharacterTextures
+    $Global:Config | Export-PowerShellDataFile -Path ".\scripts\configuration.psd1"
+}
+
 # Function Toggle Imageresolution
 function Toggle-ImageResolution {
     $currentIndex = $Global:AvailableResolutions.IndexOf($Global:TargetResolution)
