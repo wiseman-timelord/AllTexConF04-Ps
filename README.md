@@ -1,4 +1,4 @@
-# DdsBethScale-Ps
+# BethDdsScale-Ps
 
 ### STATUS: DEVELOPMENT
 Still being created, not even done the basic testing, most of it is figured out and implemented...
