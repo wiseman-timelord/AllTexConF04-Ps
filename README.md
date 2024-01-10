@@ -38,14 +38,14 @@ DdsBa2Resize-Ps, designed for Fallout 4, epitomizes efficiency and user-friendli
                     1. Data Folder Location
   C:\Program Files (x86)\Steam\steamapps\common\Fallout 4\data
 
-                    2. Max Image Resolution
+                    2. Character Textures
+                            Process
+
+                    3. Max Image Resolution
                            RATIOx1024
 
-                     3. Graphics Processor
+                     4. Graphics Processor
                   Radeon (TM) RX 470 Graphics
-
-                    4. Character Textures
-                            Process
 
 
 
