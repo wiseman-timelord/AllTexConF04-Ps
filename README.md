@@ -7,6 +7,7 @@ Still being created, not even done the basic testing, most of it is figured out 
 - Check if the program works from the, data or game, folder, it should work from the data folder, not just textures folder, then compatible with other games.
 - Do a once over on all the scripts, make sure everything is seemingly ok, then try do some improvements. 
 - Setup fake data dir etc, Test, Testing results into updates for scripts, complete scripts.
+- add centering on the data folder location line, as the whopping steam line, is not how it will look for people whom have a separate large programs drive.
 
 ### DESCRIPTION
 DdsBa2Resize-Ps, designed for Fallout 4, epitomizes efficiency and user-friendliness in Fallout 4 texture processing. It processes both loose and BA2 textures, optimizing them with DX1 or DX7 compression for non-transparent and transparent textures, respectively. DdsBa2Resize-Ps adjusts resolutions to user selection of, 2048x* or 1024x* or 512x*, maintaining aspect ratios. Its interface is intuitive, and it provides detailed output, including texture names and resolutions. DdsBa2Resize-Ps is optimized for speed, extracting files from Ba2, then updating the textures folder only back to the original Ba2, instead of re-compressing ba2 files. There are indeed other DDS conversion tools for Fallout 4, but the standout features will be:
