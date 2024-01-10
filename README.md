@@ -33,8 +33,10 @@ DdsBa2Resize-Ps, designed for Fallout 4, epitomizes efficiency and user-friendli
 
              ---( Pre-Processing Configuration )---
 
+
+
                     1. Data Folder Location
-     C:\Program Files (x86)\Steam\steamapps\common\Fallout 4
+  C:\Program Files (x86)\Steam\steamapps\common\Fallout 4\data
 
                     2. Max Image Resolution
                            RATIOx1024
@@ -45,10 +47,8 @@ DdsBa2Resize-Ps, designed for Fallout 4, epitomizes efficiency and user-friendli
                     4. Character Textures
                             Process
 
-                      B. Begin Processing
-                   (Ensure Correct Settings!!)
 
-                        X. Exit Program
+
 
 ---------------------------------------------------------------
 Select, Menu Options=1-3, Begin Resizing=B, Exit Program=X:
