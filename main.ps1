@@ -39,7 +39,7 @@ function Show-ConfigurationMenu {
         Write-Host "  $($Global:DataDirectory)`n"
         Write-Host "                  2. Textures\Actors\Character"
 $charTextureStatus = if ($Global:ProcessCharacterTextures) { "Process" } else { "Ignore" }
-        Write-Host "                           $charTextureStatus`n"
+        Write-Host "                            $charTextureStatus`n"
         Write-Host "                    3. Max Image Resolution"
         Write-Host "                          RATIOx$($Global:TargetResolution)`n"
         Write-Host "                     4. Graphics Processor"
@@ -51,10 +51,10 @@ $charTextureStatus = if ($Global:ProcessCharacterTextures) { "Process" } else { 
         Write-Host "                  $currentGpuDisplay`n"
         $archiveMultiThreadStatus = if ($Global:ArchiveMultithreading) { "Multi-Thread" } else { "Single-Thread" }
     Write-Host "                   5. Multi-Thread Archiving"
-    Write-Host "                        $archiveMultiThreadStatus`n`n"
+    Write-Host "                         $archiveMultiThreadStatus`n`n"
     ...
         Show-Divider
-        $choice = Read-Host "Select, Menu Options=1-3, Begin Resizing=B, Exit Program=X"
+        $choice = Read-Host "Select, Menu Options=1-5, Begin Resizing=B, Exit Program=X"
         switch ($choice) {
             "1" { Update-DataFolderLocation }
 			"2" { Toggle-CharacterTextures }
