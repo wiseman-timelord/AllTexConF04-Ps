@@ -63,6 +63,12 @@ function ProcessIndividualTextures {
     $texturesPath = Join-Path $Global:DataDirectory "Textures"
     $textures = Get-ChildItem -Path $texturesPath -Filter "*.dds" -Recurse
     foreach ($texture in $textures) {
+        # Skip character textures if processing is disabled
+        if (-not $Global:ProcessCharacterTextures -and $texture.FullName -like "*\Actors\Character\*") {
+            Write-Host "$($texture.Name): Character Texture Skipped."
+            Continue
+        }
+
         $imageInfo = RetrieveTextureDetails -texturePath $texture.FullName
         if ($imageInfo.Width -gt $targetResolution) {
             AdjustTextureSize -texturePath $texture.FullName -targetResolution $targetResolution -format $imageInfo.Format
@@ -73,6 +79,7 @@ function ProcessIndividualTextures {
     }
     Write-Host "Loose Textures Processed"
 }
+
 
 # Function Processcompressedtexturefiles
 function ProcessCompressedTextureFiles {
