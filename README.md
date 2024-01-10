@@ -7,6 +7,9 @@ Still being created, not even done the basic testing, most of it is figured out 
 - Setup fake data dir etc, Test, Testing results into updates for scripts, complete scripts.
 - add centering on the data folder location line, as the whopping steam line, is not how it will look for people whom have a separate large programs drive.
 - Do a once over on all the scripts, make sure everything is seemingly ok, then try do some improvements.
+- option on main config menu to use or not use -mt command in handling of unpacking/packing archives.
+- Mutli-Thread, Upon detect GPUs, if there is more than 1 graphics card, that is not the default MS renderer, then on the option to set GPU have option to select "Multi-Gpu Dds Processing", this would result in workload being split into multiple lists, then individually processed by GPUs at same time in parrallel.
+  
 
 ### DESCRIPTION
 BethDdsScale-Ps, designed for Modern Bethesda games for, Textures and Archives, processing. It processes both, loose and Ba/Ba2 packed, textures, optimizing to user specified limits in size, for, non-transparent and transparent textures, respectively preserving the original formats of compression. BethDdsScale-Ps adjusts resolutions to, RATIOx4096, RATIOx2048 or RATIOx1024 or RATIOx512 or RATIOx256 (even Quake1 fans are catered for), somewhat maintaining wider images used for skies etc. Its interface is intuitive, and it provides detailed output, including texture names and resolutions. BethDdsScale-Ps is optimized for speed, extracting files from Ba2, then updating the textures folder only back to the original Ba2, and also, processing image files where they stand, instead of relevantly, re-compressing ba2 files and moving images. There are indeed other DDS conversion tools, but the standout features will be, support for any Bethesda game from Oldrim to Starfield:
@@ -114,9 +117,8 @@ Select, Error Log=E, Exit Program=X:
 - Git, required by installer for, "7za" and "DirectXTex".
 
 ### POSSIBILITIES
-- get user to select game folder, then search list for names of common games known to have dds textures...can 7za also do ba1 files? If so widen the horizons of the project. additionally incorporate further decompression libraries, gotta catch em all, though I would be happy stopping at, all, elderscrolls and fallout and starfield, as they are games of interest, and the folder structures wll be the same, ie character folder toggle will apply.
 - Use up-to-date libraries for downscaling... For AMD GPUs: Compressonator is a robust choice, offering fast, GPU-accelerated compression and a range of advanced encoding options. For NVIDIA GPUs: NVIDIA's Texture Tools Exporter is the go-to tool, leveraging CUDA acceleration for efficient texture compression. ^_^
-- Mutli-Thread, Upon detect GPUs, have option for select ALL, this would result in workload being split into 2 lists, then individually processed by GPUs at same time in parrallel, additionally, detect how many cores each GPU has, and devide the work further that way, example, RX 470 is 2 core while HD 7850 is 1 core, hence, 3 lists, 2/3 of the work to the RX 470 and 1/3 of the work to the HD 7850.
+
 
 ### NOTATION
 - The "Brown faces" bug in Fallout 4 can occur without resizing textures, possibly due to changes in, makeup and face, bc compression. BethDdsScale preserves the original compression, however, this is why the option exists to bypass character textures.
