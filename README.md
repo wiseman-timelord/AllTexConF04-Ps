@@ -119,7 +119,7 @@ Select, Error Log=E, Exit Program=X:
 - Mutli-Thread, Upon detect GPUs, have option for select ALL, this would result in workload being split into 2 lists, then individually processed by GPUs at same time in parrallel, additionally, detect how many cores each GPU has, and devide the work further that way, example, RX 470 is 2 core while HD 7850 is 1 core, hence, 3 lists, 2/3 of the work to the RX 470 and 1/3 of the work to the HD 7850.
 
 ### NOTATION
-- As for Brown faces bug in fallout 4, they happen without re-sizing, but, supposedly more if resizing images, I think its to do with, makeup and face, textures, and altering their compression quality, however, DdsBa2Resize maintains compression in original format, either way, this is why we have the option to bypass character textures.  
+- The "Brown faces" bug in Fallout 4 can occur without resizing textures, possibly due to changes in, makeup and face, bc compression. DdsBa2Resize preserves the original compression, however, this is why the option exists to bypass character textures.
 
 ### CREDITS
 - Credit to, 7-Zip Team and Microsoft, for relevantly, 7za abd DirectXTex.
