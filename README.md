@@ -102,7 +102,7 @@ Select, Error Log=E, Exit Program=X:
 ````
 
 ### USAGE
-1. Run `Setup-Install.Bat` to, install required libraries and create program folders, ensure to allow `Setup-Installer.Bat` through firewall first, or you may have to run it again if you have popups for rules, and if you have errors, try typing "Set-ExecutionPolicy RemoteSigned" in a powershell console that has admin to enable downloading from signed servers.
+1. Run `Setup-Install.Bat` to, install required libraries and create program folders, this is a web-install, so ensure to allow `Setup-Installer.Bat` through firewall first, or you may have to run it again if you have popups for rules, and if you have errors after that, try typing "Set-ExecutionPolicy RemoteSigned" in a powershell console that has admin, to enable downloading from digitally signed servers.
 2. Run `DdsBethScale.Bat` to start the script.
 3. Select your preferences, game\data location, character assets, desired max resolution, GPU processor.
 4. Press `b` to Begin, and set the scripts process the textures in your `Data` directory.
@@ -111,7 +111,7 @@ Select, Error Log=E, Exit Program=X:
 ### REQUIREMENTS
 - PowerShell =>4.0 (Win =>8.1, or get 5.1 Update) or Powershell Core =>7.
 - Installed Bethesda game, Skyrim (32), Skyrim SE, Fallout NV, Fallout 3, Fallout 4, StarField, any, version and mods, will be fine.
-- Library Requirements installed by `Setup-Installer.Bat`, ensure to allow `Setup-Installer.Bat` through firewall, if you have errors, try typing "Set-ExecutionPolicy RemoteSigned" in a powershell console that has admin.
+- Library Requirements installed by `Setup-Installer.Bat`, this includes currently, 7zr, BSArch, DirectXTex.
 - Git, required by installer for, "7za" and "DirectXTex".
 
 ### POSSIBILITIES
