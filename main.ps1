@@ -5,6 +5,7 @@ $Global:Config = Import-PowerShellDataFile -Path ".\scripts\configuration.psd1"
 $scriptPath = Split-Path -Parent $MyInvocation.MyCommand.Definition
 $Global:ToolsDirectory = $scriptPath
 $Global:BinDirectory = Join-Path $scriptPath "binaries"
+$Global:BSArch64Executable = Join-Path $Global:BinDirectory "BSArch64.exe"
 $Global:TexConvExecutable = Join-Path $Global:BinDirectory "texconv.exe"
 $Global:TexDiagExecutable = Join-Path $Global:BinDirectory "texdiag.exe"
 $Global:CacheDirectory = Join-Path $scriptPath "cache"
@@ -81,7 +82,8 @@ function DisplaySummaryScreen {
 	Clear-Host
 	Show-AsciiArt
     Show-Title
-    Write-Host "-----------------------( Final Summary )-----------------------"
+    Write-Host "             ---( Pre-Processing Configuration )---`n"
+    Write-Host "                     ---( Final Summary )---"
     Write-Host "Processing Stats:"
     Write-Host "Start: $($Global:ProcessingStartTime.ToString('HH:mm')), Duration: $processingTimeFormatted"
     Write-Host "Processed: $($Global:FilesProcessed), Passed: $($Global:FilesPassed)"

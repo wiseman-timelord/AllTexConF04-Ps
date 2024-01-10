@@ -14,9 +14,9 @@ function InitiateTextureProcessing {
     Write-Host "Loose Texture Processing..."
     ProcessIndividualTextures -targetResolution $targetResolution
     Write-Host "...Loose Textures Processed."
-    Write-Host "Ba2 Texture Processing..."
+    Write-Host "Archive Texture Processing..."
     ProcessCompressedTextureFiles -targetResolution $targetResolution
-    Write-Host "...Ba2 Files Processed."
+    Write-Host "...Archive Files Processed."
     $Global:ResultingDataSize = Get-DataSize
     $Global:ProcessingEndTime = Get-Date
     Write-Host "$($Global:ProcessingEndTime.ToString('HH:mm')): ...Texture Processing Completed."
@@ -26,8 +26,9 @@ function InitiateTextureProcessing {
 # Function Get Datasize
 function Get-DataSize {
     $totalSize = 0
-    $totalSize += (Get-ChildItem -Path "$Global:DataDirectory\Textures" -Recurse | Measure-Object -Property Length -Sum).Sum
-    $totalSize += (Get-ChildItem -Path $Global:DataDirectory -Filter "*textures.ba2" | Measure-Object -Property Length -Sum).Sum
+    $totalSize += (Get-ChildItem -Path "$Global:DataDirectory" -Recurse | Measure-Object -Property Length -Sum).Sum
+    $totalSize += (Get-ChildItem -Path $Global:DataDirectory -Filter "*.ba2" | Measure-Object -Property Length -Sum).Sum
+	$totalSize += (Get-ChildItem -Path $Global:DataDirectory -Filter "*.bsa" | Measure-Object -Property Length -Sum).Sum
     return $totalSize / 1MB  
 }
 
@@ -36,7 +37,6 @@ function Toggle-CharacterTextures {
     $Global:Config.ProcessCharacterTextures = $Global:ProcessCharacterTextures
     $Global:Config | Export-PowerShellDataFile -Path ".\scripts\configuration.psd1"
 }
-
 
 # Function Retrievetexturedetails
 function RetrieveTextureDetails {
@@ -80,19 +80,6 @@ function ProcessIndividualTextures {
     Write-Host "Loose Textures Processed"
 }
 
-
-# Function Processcompressedtexturefiles
-function ProcessCompressedTextureFiles {
-    param (
-        [int]$targetResolution
-    )
-    $ba2Files = Get-ChildItem -Path $Global:DataDirectory -Filter "*textures.ba2"
-    foreach ($ba2File in $ba2Files) {
-        Write-Host "$($ba2File.Name): Unpacking Contents."
-        Write-Host "$($ba2File.Name): Contents RePackaged."
-    }
-}
-
 # Function Adjusttexturesize
 function AdjustTextureSize {
     param (
@@ -116,16 +103,84 @@ function AdjustTextureSize {
     }
 }
 
+function Get-ArchiveFormat {
+    param ([string]$archivePath)
+
+    $output = & $Global:BSArch64Executable $archivePath
+    if ($output -match "Format:\s*(.+)\s") {
+        switch -Regex ($Matches[1]) {
+            "Morrowind" { return "-tes3" }
+            "Oblivion" { return "-tes4" }
+            "Fallout 3" { return "-fo3" }
+            "Fallout: New Vegas" { return "-fnv" }
+            "Skyrim LE" { return "-tes5" }
+            "Skyrim Special Edition" { return "-sse" }
+            "Fallout 4" { return "-fo4" }
+            "Fallout 4 DDS" { return "-fo4dds" }
+            "Starfield" { return "-sf1" }
+            "Starfield DDS" { return "-sf1dds" }
+            default { throw "Unknown archive format: $($Matches[1])" }
+        }
+    } else {
+        throw "Failed to determine archive format for $archivePath"
+    }
+}
+
 # Function Repackagetexturesintoba2
 function RepackageTexturesIntoBA2 {
     param (
         [string]$sourceDirectory,
-        [string]$ba2FilePath
+        [string]$ba2FilePath,
+        [string]$formatFlag
     )
     try {
-        & $Global:SevenZipExecutable a $ba2FilePath $sourceDirectory\* -y
-        Write-Host "BA2 Repackaged"
+        Write-Host "Repackaging into $ba2FilePath using format $formatFlag."
+        & $Global:BSArch64Executable pack $sourceDirectory $ba2FilePath $formatFlag -mt
+        Write-Host "...Archive Repackaged"
     } catch {
-        Write-Error "BA2 Compression Failed"
+        Write-Error "Archive Compression Failed: $_"
     }
+}
+
+# Function Processcompressedtexturefiles
+function ProcessCompressedTextureFiles {
+    param (
+        [int]$targetResolution
+    )
+    $compressedFiles = Get-ChildItem -Path $Global:DataDirectory -Filter "*.ba2", "*.bsa"
+    foreach ($compressedFile in $compressedFiles) {
+        $formatFlag = Get-ArchiveFormat -archivePath $compressedFile.FullName
+        $unpackFolder = Join-Path $Global:CacheDirectory $compressedFile.BaseName
+
+        Write-Host "$($compressedFile.Name): Unpacking Contents."
+        & $Global:BSArch64Executable unpack $compressedFile.FullName $unpackFolder -q -mt
+
+        # Process the textures in $unpackFolder as per your existing logic
+
+        Write-Host "$($compressedFile.Name): Contents RePackaged."
+        RepackageTexturesIntoBA2 -sourceDirectory $unpackFolder -ba2FilePath $compressedFile.FullName -formatFlag $formatFlag
+    }
+}
+
+# Function Initiatetextureprocessing
+function InitiateTextureProcessing {
+    param (
+        [string]$resolution
+    )
+    $Global:ProcessingStartTime = Get-Date
+    Write-Host "$($Global:ProcessingStartTime.ToString('HH:mm')): Texture Processing Started..."
+    $Global:FilesProcessed = 0
+    $Global:FilesPassed = 0
+    $Global:PreviousDataSize = Get-DataSize
+    $targetResolution = [int]$resolution
+    Write-Host "Loose Texture Processing..."
+    ProcessIndividualTextures -targetResolution $targetResolution
+    Write-Host "...Loose Textures Processed."
+    Write-Host "Archive Texture Processing..."
+    ProcessCompressedTextureFiles -targetResolution $targetResolution
+    Write-Host "...Archive Files Processed."
+    $Global:ResultingDataSize = Get-DataSize
+    $Global:ProcessingEndTime = Get-Date
+    Write-Host "$($Global:ProcessingEndTime.ToString('HH:mm')): ...Texture Processing Completed."
+    DisplaySummaryScreen
 }
