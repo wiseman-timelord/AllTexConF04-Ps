@@ -123,7 +123,7 @@ Select, Error Log=E, Exit Program=X:
 - If you have problems with the Setup-Install.Bat, after sorting out firewall stuff, try typing "Set-ExecutionPolicy RemoteSigned" in a powershell console that has admin, to enable downloading from digitally signed servers.
 
 ### CREDITS
-- Credit to, 7-Zip Team and Microsoft, for relevantly, 7za abd DirectXTex.
+- Credit to, 7-Zip and Microsoft and TES5Edit, teams for relevantly, 7za abd DirectXTex and BSArch.
 
 ### DISCLAIMER
 This program is provided "as is" without warranties or support. Users are responsible for the content they, download and use, as well as, any resulting damage to, hardware or sanity.
