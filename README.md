@@ -4,13 +4,14 @@
 Still being created, not even done the basic testing, most of it is figured out and implemented...
 - Test out the new blinging pre-processing configuration menu, fix issues..
 - Check code relating to operations is being centered around examplegame\data folder, and not, examplegame\ or examplegame\data\textures\.
-- Setup fake data dir etc, Test, Testing results into updates for scripts, complete scripts.
+
 - add centering on the data folder location line, as the whopping steam line, is not how it will look for people whom have a separate large programs drive.
-- Do a once over on all the scripts, make sure everything is seemingly ok, then try do some improvements.
 - option on main config menu to use or not use -mt command in handling of unpacking/packing archives, currently it should be hardcoded to be used.
 - Check if it copies stuff to the cache folder, converts, then copies back or if it does it in place, its important it does the processing in the cache folder, incase it crashes mid-stride, copying files not so likely to crash.
 - Mutli-Thread, Upon detect GPUs, if there is more than 1 graphics card, that is not the default MS renderer, then on the option to set GPU have option to select "Multi-Gpu Dds Processing", this would result in workload being split into multiple lists, then individually processed by GPUs at same time in parrallel.
-  
+- Decide final order of options on pre-processing menu
+- Do a once over on all the scripts, make sure everything is seemingly ok, then try do some improvements.
+- Setup fake data dir etc, Test, Testing results into updates for scripts, complete scripts.
 
 ### DESCRIPTION
 BethDdsScale-Ps, designed for Modern Bethesda games for, Textures and Archives, processing. It processes both, loose and Ba/Ba2 packed, textures, optimizing to user specified limits in size, for, non-transparent and transparent textures, respectively preserving the original formats of compression. BethDdsScale-Ps adjusts resolutions to, RATIOx4096, RATIOx2048 or RATIOx1024 or RATIOx512 or RATIOx256 (even Quake1 fans are catered for), somewhat maintaining wider images used for skies etc. Its interface is intuitive, and it provides detailed output, including texture names and resolutions. BethDdsScale-Ps is optimized for speed, extracting files from Ba2, then updating the textures folder only back to the original Bsa/Ba2. There are indeed other DDS conversion tools, but the standout features will be, support for any Bethesda game from Oldrim to Starfield:
