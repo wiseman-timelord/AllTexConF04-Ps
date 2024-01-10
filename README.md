@@ -29,9 +29,9 @@ BethDdsScale-Ps, designed for Modern Bethesda games for, Textures and Archives, 
 
 ### PREVIEW
 ```
-  ____       _   _     ____      _     ____            _      
- | __ )  ___| |_| |__ |  _ \  __| |___/ ___|  ___ __ _| | ___ 
- |  _ \ / _ \ __| '_ \| | | |/ _` / __\___ \ / __/ _` | |/ _ \
+  ____       _   _     ____      _     ____            _
+ | __ )  ___| |_| |__ |  _ \  __| |___/ ___|  ___ ___ | | ___
+ |  _ \ / _ \ __|  _ \| | | |/ _  / __\___ \ / __/ _ \| |/ _ \
  | |_) |  __/ |_| | | | |_| | (_| \__ \___) | (_| (_| | |  __/
  |____/ \___|\__|_| |_|____/ \__,_|___/____/ \___\__,_|_|\___|
 
@@ -40,20 +40,20 @@ BethDdsScale-Ps, designed for Modern Bethesda games for, Textures and Archives, 
              ---( Pre-Processing Configuration )---
 
 
-
                     1. Data Folder Location
   C:\Program Files (x86)\Steam\steamapps\common\Fallout 4\data
 
-                 2. textures\Actors\Character
+                  2. Textures\Actors\Character
                            Process
 
                     3. Max Image Resolution
-                           RATIOx1024
+                          RATIOx1024
 
                      4. Graphics Processor
                   Radeon (TM) RX 470 Graphics
 
-
+                   5. Multi-Thread Archiving
+                        Single-Thread
 
 
 ---------------------------------------------------------------
