@@ -10,6 +10,7 @@ $Global:TexDiagExecutable = Join-Path $Global:BinDirectory "texdiag.exe"
 $Global:CacheDirectory = Join-Path $scriptPath "cache"
 $Global:DataDirectory = $Global:Config.DataFolderLocation
 $Global:SelectedGPU = $Global:Config.GpuCardSelectionNumber
+$Global:ProcessCharacterTextures = $Global:Config.ProcessCharacterTextures
 $Global:AvailableResolutions = @(512, 1024, 2048)
 $Global:TargetResolution = 1024  
 $Global:SelectedGPU = 0  
@@ -31,7 +32,7 @@ function Show-ConfigurationMenu {
         Clear-Host
 		Show-AsciiArt
 		Show-Title
-        Write-Host "             ---( Pre-Processing Configuration )---`n`n"
+        Write-Host "             ---( Pre-Processing Configuration )---`n"
         Write-Host "                    1. Data Folder Location"
         Write-Host "     $($Global:DataDirectory)`n"
         Write-Host "                    2. Max Image Resolution"
@@ -43,15 +44,19 @@ function Show-ConfigurationMenu {
             $currentGpuDisplay = "No GPU Found"
         }
         Write-Host "                  $currentGpuDisplay`n"
-        Write-Host "                      B. Begin Processing"
+        Write-Host "                    4. Character Textures"
+$charTextureStatus = if ($Global:ProcessCharacterTextures) { "Process" } else { "Ignore" }
+Write-Host "                            $charTextureStatus`n"
+		Write-Host "                      B. Begin Processing"
 		Write-Host "                   (Ensure Correct Settings!!)`n"
-		Write-Host "                        X. Exit Program`n`n`n"
+		Write-Host "                        X. Exit Program`n"
         Show-Divider
         $choice = Read-Host "Select, Menu Options=1-3, Begin Resizing=B, Exit Program=X"
         switch ($choice) {
             "1" { Update-DataFolderLocation }
             "2" { Toggle-ImageResolution }
             "3" { Toggle-GPUSelection }
+			"4" { Toggle-CharacterTextures }
             "B" { InitiateTextureProcessing $Global:TargetResolution; break }
             "X" { Write-Host "Exiting..."; return }
             default { Write-Host "Invalid option, please try again" }
