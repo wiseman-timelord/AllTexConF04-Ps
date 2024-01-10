@@ -113,7 +113,7 @@ Select, Error Log=E, Exit Program=X:
 - Git, required by installer for, "7za" and "DirectXTex".
 
 ### POSSIBILITIES
-- get user to select game folder, then search list for names of common games known to have dds textures...can 7za also do ba1 files? If so widen the horizons of the project. additionally incorporate further decompression libraries, gotta catch em all, though I would be happy stopping at, all, elderscrolls and fallout and starfield, as they are games of interest.
+- get user to select game folder, then search list for names of common games known to have dds textures...can 7za also do ba1 files? If so widen the horizons of the project. additionally incorporate further decompression libraries, gotta catch em all, though I would be happy stopping at, all, elderscrolls and fallout and starfield, as they are games of interest, and the folder structures wll be the same, ie character folder toggle will apply.
 - Use up-to-date libraries for downscaling... For AMD GPUs: Compressonator is a robust choice, offering fast, GPU-accelerated compression and a range of advanced encoding options. For NVIDIA GPUs: NVIDIA's Texture Tools Exporter is the go-to tool, leveraging CUDA acceleration for efficient texture compression. ^_^
 - Mutli-Thread, Upon detect GPUs, have option for select ALL, this would result in workload being split into 2 lists, then individually processed by GPUs at same time in parrallel, additionally, detect how many cores each GPU has, and devide the work further that way, example, RX 470 is 2 core while HD 7850 is 1 core, hence, 3 lists, 2/3 of the work to the RX 470 and 1/3 of the work to the HD 7850.
 
