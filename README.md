@@ -2,13 +2,11 @@
 
 ### STATUS: DEVELOPMENT
 Still being created, not even done the basic testing, most of it is figured out and implemented...
-- Update processing.ps1 to use bsarch instead of 7za.
 - Test out the new blinging pre-processing configuration menu, fix issues..
-- Make the program actually, point to and work from, the data folder, instead of fallout 4/game folder or whatever is current, this way compatible with other games with dds/ba2 data folder.
-- Check if the program works from the, data or game, folder, it should work from the data folder, not just textures folder, then compatible with other games.
-- Do a once over on all the scripts, make sure everything is seemingly ok, then try do some improvements. 
+- Check code relating to operations being centered around examplegame\data folder, and not examplegame\data\textures is correct 
 - Setup fake data dir etc, Test, Testing results into updates for scripts, complete scripts.
 - add centering on the data folder location line, as the whopping steam line, is not how it will look for people whom have a separate large programs drive.
+- Do a once over on all the scripts, make sure everything is seemingly ok, then try do some improvements.
 
 ### DESCRIPTION
 BethDdsScale-Ps, designed for Modern Bethesda games for, Textures and Archives, processing. It processes both, loose and Ba/Ba2 packed, textures, optimizing to user specified limits in size, for, non-transparent and transparent textures, respectively preserving the original formats of compression. BethDdsScale-Ps adjusts resolutions to, RATIOx4096, RATIOx2048 or RATIOx1024 or RATIOx512 or RATIOx256 (even Quake1 fans are catered for), somewhat maintaining wider images used for skies etc. Its interface is intuitive, and it provides detailed output, including texture names and resolutions. BethDdsScale-Ps is optimized for speed, extracting files from Ba2, then updating the textures folder only back to the original Ba2, and also, processing image files where they stand, instead of relevantly, re-compressing ba2 files and moving images. There are indeed other DDS conversion tools, but the standout features will be, support for any Bethesda game from Oldrim to Starfield:
