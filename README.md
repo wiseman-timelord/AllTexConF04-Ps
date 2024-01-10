@@ -124,6 +124,7 @@ Select, Error Log=E, Exit Program=X:
 ### NOTATION
 - The "Brown faces" bug in Fallout 4 can occur without resizing textures, possibly due to changes in, makeup and face, bc compression. BethDdsScale preserves the original compression, however, this is why the option exists to bypass character textures.
 - If you have problems with the Setup-Install.Bat, after sorting out firewall stuff, try typing "Set-ExecutionPolicy RemoteSigned" in a powershell console that has admin, to enable downloading from digitally signed servers.
+- On my Ryzen 9 x3900 with its 24 threads, the difference between, multi-thread and single-thread, unpacking of a 3GB Fallout 4 Ba2, while running some other apps was relevantly, 46 or 14, Seconds, thats 69% faster Archiving.   
 
 ### CREDITS
 - Credit to, 7-Zip and Microsoft and TES5Edit, teams for relevantly, 7za abd DirectXTex and BSArch.
