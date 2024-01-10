@@ -5,7 +5,6 @@ Still being created, not even done the basic testing, most of it is figured out 
 - Test out the new blinging pre-processing configuration menu, fix issues..
 - Make the program actually point to the data folder, instead of fallout 4 or whatever is current, this way compatible with other programs with the data folder.
 - Idea, Make the program search for all dds in data folder, not just textures folder.
-- Option on menu toggle character assets bypass/process (textures\Actors\Character).
 - Do a once over on all the scripts, make sure everything is seemingly ok, then try do some improvements. 
 - Setup fake data dir etc, Test, Testing results into updates for scripts, complete scripts.
 
@@ -34,7 +33,6 @@ DdsBa2Resize-Ps, designed for Fallout 4, epitomizes efficiency and user-friendli
 
              ---( Pre-Processing Configuration )---
 
-
                     1. Data Folder Location
      C:\Program Files (x86)\Steam\steamapps\common\Fallout 4
 
@@ -44,12 +42,13 @@ DdsBa2Resize-Ps, designed for Fallout 4, epitomizes efficiency and user-friendli
                      3. Graphics Processor
                   Radeon (TM) RX 470 Graphics
 
+                    4. Character Textures
+                            Process
+
                       B. Begin Processing
                    (Ensure Correct Settings!!)
 
                         X. Exit Program
-
-
 
 ---------------------------------------------------------------
 Select, Menu Options=1-3, Begin Resizing=B, Exit Program=X:
