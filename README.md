@@ -3,6 +3,8 @@
 ### STATUS: DEVELOPMENT
 Still being created, not even done the basic testing, most of it is figured out and implemented...
 - Test out the new blinging pre-processing configuration menu, fix issues..
+- Make the program actually point to the data folder, instead of fallout 4 or whatever is current, this way compatible with other programs with the data folder.
+- Idea, Make the program search for all dds in data folder, not just textures folder.
 - Do a once over on all the scripts, make sure everything is seemingly ok, then try do some improvements. 
 - Setup fake data dir etc, Test, Testing results into updates for scripts, complete scripts.
 
