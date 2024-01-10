@@ -27,7 +27,7 @@ DdsBa2Resize-Ps, designed for Fallout 4, epitomizes efficiency and user-friendli
   | |_| | (_| \__ \ |_) | (_| |/ __/|  _ <  __/\__ \ |/ /  __/
   |____/ \__,_|___/____/ \__,_|_____|_| \_\___||___/_/___\___|
 
-======================( AllTexConFO4-Ps )======================
+======================( DdsBa2Resize-Ps )======================
 
              ---( Pre-Processing Configuration )---
 
@@ -75,7 +75,7 @@ TexturesArchive1.ba2: Contents RePackaged.
   | |_| | (_| \__ \ |_) | (_| |/ __/|  _ <  __/\__ \ |/ /  __/
   |____/ \__,_|___/____/ \__,_|_____|_| \_\___||___/_/___\___|
 
-======================( AllTexConFO4-Ps )======================
+======================( DdsBa2Resize-Ps )======================
 
                ---( Post-Processing Summary )---
 
