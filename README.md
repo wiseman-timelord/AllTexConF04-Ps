@@ -10,9 +10,9 @@ Still being created, not even done the basic testing, most of it is figured out 
 
 ### DESCRIPTION
 BethDdsScale-Ps, designed for Modern Bethesda games for, Textures and Archives, processing. It processes both, loose and Ba/Ba2 packed, textures, optimizing to user specified limits in size, for, non-transparent and transparent textures, respectively preserving the original formats of compression. BethDdsScale-Ps adjusts resolutions to, RATIOx4096, RATIOx2048 or RATIOx1024 or RATIOx512 or RATIOx256 (even Quake1 fans are catered for), somewhat maintaining wider images used for skies etc. Its interface is intuitive, and it provides detailed output, including texture names and resolutions. BethDdsScale-Ps is optimized for speed, extracting files from Ba2, then updating the textures folder only back to the original Ba2, and also, processing image files where they stand, instead of relevantly, re-compressing ba2 files and moving images. There are indeed other DDS conversion tools, but the standout features will be, support for any Bethesda game from Oldrim to Starfield:
-1. Non-complicated configuration, at least the least complicated I've seen.
-2. The GPU selection for processing.
-4. processing all the textures, in loose and packed in ba2, files, in one action.
+- Non-complicated configuration, at least the least complicated I've seen.
+- The GPU selection for processing.
+- processing all the textures, in loose and packed in ba2, files, in one action.
 
 ### FEATURES
 - **Resolution Adjustment**: Dynamically scales textures exceeding a target resolution, maintaining aspect ratio.
