@@ -3,7 +3,7 @@
 ### STATUS: DEVELOPMENT
 Still being created, not even done the basic testing, most of it is figured out and implemented...
 - Test out the new blinging pre-processing configuration menu, fix issues..
-- Check code relating to operations being centered around examplegame\data folder, and not examplegame\data\textures is correct 
+- Check code relating to operations is being centered around examplegame\data folder, and not, examplegame\ or examplegame\data\textures\.
 - Setup fake data dir etc, Test, Testing results into updates for scripts, complete scripts.
 - add centering on the data folder location line, as the whopping steam line, is not how it will look for people whom have a separate large programs drive.
 - Do a once over on all the scripts, make sure everything is seemingly ok, then try do some improvements.
