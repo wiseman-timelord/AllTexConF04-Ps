@@ -120,6 +120,7 @@ Select, Error Log=E, Exit Program=X:
 
 ### NOTATION
 - The "Brown faces" bug in Fallout 4 can occur without resizing textures, possibly due to changes in, makeup and face, bc compression. DdsBethScale preserves the original compression, however, this is why the option exists to bypass character textures.
+- To get 7zr to install I had to run "Set-ExecutionPolicy RemoteSigned" for some reason...
 
 ### CREDITS
 - Credit to, 7-Zip Team and Microsoft, for relevantly, 7za abd DirectXTex.
