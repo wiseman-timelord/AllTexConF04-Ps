@@ -103,7 +103,7 @@ Select, Error Log=E, Exit Program=X:
 ````
 
 ### USAGE
-1. Run `Setup-Install.Bat` to, install required libraries and create program folders, this is a web-install, so ensure to allow `Setup-Installer.Bat` through firewall first, or you may have to run it again if you have popups for rules, and if you have errors after that, try typing "Set-ExecutionPolicy RemoteSigned" in a powershell console that has admin, to enable downloading from digitally signed servers.
+1. Run `Setup-Install.Bat` to, install required libraries and create program folders, this is a web-install, so ensure to allow `Setup-Installer.Bat` through firewall first, or you may have to run it again if you have popups for rules.
 2. Run `DdsBethScale.Bat` to start the script.
 3. Select your preferences, game\data location, character assets, desired max resolution, GPU processor.
 4. Press `b` to Begin, and set the scripts process the textures in your `Data` directory.
@@ -122,7 +122,7 @@ Select, Error Log=E, Exit Program=X:
 
 ### NOTATION
 - The "Brown faces" bug in Fallout 4 can occur without resizing textures, possibly due to changes in, makeup and face, bc compression. BethDdsScale preserves the original compression, however, this is why the option exists to bypass character textures.
-- To get 7zr to install I had to run "Set-ExecutionPolicy RemoteSigned" for some reason...
+- If you have problems with the Setup-Install.Bat, after sorting out firewall stuff, try typing "Set-ExecutionPolicy RemoteSigned" in a powershell console that has admin, to enable downloading from digitally signed servers.
 
 ### CREDITS
 - Credit to, 7-Zip Team and Microsoft, for relevantly, 7za abd DirectXTex.
