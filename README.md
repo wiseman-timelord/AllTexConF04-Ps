@@ -3,7 +3,7 @@
 ### STATUS: DEVELOPMENT
 Still being created, not even done the basic testing, most of it is figured out and implemented...
 - Test out the new blinging pre-processing configuration menu, fix issues..
-- Make the program actually point to the data folder, instead of fallout 4 or whatever is current, this way compatible with other programs with the data folder.
+- Make the program actually, point to and work from, the data folder, instead of fallout 4/game folder or whatever is current, this way compatible with other games with dds/ba2 data folder.
 - Check if the program works from the, data or game, folder, it should work from the data folder, not just textures folder, then compatible with other games.
 - Do a once over on all the scripts, make sure everything is seemingly ok, then try do some improvements. 
 - Setup fake data dir etc, Test, Testing results into updates for scripts, complete scripts.
@@ -113,8 +113,7 @@ Select, Error Log=E, Exit Program=X:
 - Git, required by installer for, "7za" and "DirectXTex".
 
 ### POSSIBILITIES
-- 7za is only available on websites in, 7z and msi, format, must compile 7za into a portable single executable, and host on github, then include in Setup-Install.Bat, to be able to upload project to Nexus.
-- Compiling TexConv.exe with additonal argument -null or something, to bypass, checking and writing, a file, when given the "texconv.exe filename.dds" command, and instead print default image info, thus removing the requirement of texdiag.exe.
+- can 7za also do ba1 files? If so widen the horizons of the project, get user to select game folder, then search list for names of common games known to be supported, additionally incorporate further decompression libraries, gotta catch em all!
 - Use up-to-date libraries for downscaling... For AMD GPUs: Compressonator is a robust choice, offering fast, GPU-accelerated compression and a range of advanced encoding options. For NVIDIA GPUs: NVIDIA's Texture Tools Exporter is the go-to tool, leveraging CUDA acceleration for efficient texture compression. ^_^
 - Mutli-Thread, Upon detect GPUs, have option for select ALL, this would result in workload being split into 2 lists, then individually processed by GPUs at same time in parrallel, additionally, detect how many cores each GPU has, and devide the work further that way, example, RX 470 is 2 core while HD 7850 is 1 core, hence, 3 lists, 2/3 of the work to the RX 470 and 1/3 of the work to the HD 7850.
 
