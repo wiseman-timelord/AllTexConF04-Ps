@@ -134,8 +134,9 @@ function RepackageTexturesIntoBA2 {
         [string]$formatFlag
     )
     try {
-        Write-Host "Repackaging into $ba2FilePath using format $formatFlag."
-        & $Global:BSArch64Executable pack $sourceDirectory $ba2FilePath $formatFlag -mt
+        $mtOption = if ($Global:ArchiveMultithreading) { "-mt" } else { "" }
+        Write-Host "Repackaging into $ba2FilePath using format $formatFlag $mtOption."
+        & $Global:BSArch64Executable pack $sourceDirectory $ba2FilePath $formatFlag $mtOption
         Write-Host "...Archive Repackaged"
     } catch {
         Write-Error "Archive Compression Failed: $_"
@@ -151,9 +152,10 @@ function ProcessCompressedTextureFiles {
     foreach ($compressedFile in $compressedFiles) {
         $formatFlag = Get-ArchiveFormat -archivePath $compressedFile.FullName
         $unpackFolder = Join-Path $Global:CacheDirectory $compressedFile.BaseName
+        $mtOption = if ($Global:ArchiveMultithreading) { "-mt" } else { "" }
 
         Write-Host "$($compressedFile.Name): Unpacking Contents."
-        & $Global:BSArch64Executable unpack $compressedFile.FullName $unpackFolder -q -mt
+        & $Global:BSArch64Executable unpack $compressedFile.FullName $unpackFolder -q $mtOption
 
         # Process the textures in $unpackFolder as per your existing logic
 
@@ -161,6 +163,7 @@ function ProcessCompressedTextureFiles {
         RepackageTexturesIntoBA2 -sourceDirectory $unpackFolder -ba2FilePath $compressedFile.FullName -formatFlag $formatFlag
     }
 }
+
 
 # Function Initiatetextureprocessing
 function InitiateTextureProcessing {

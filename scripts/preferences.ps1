@@ -12,6 +12,12 @@ function Update-DataFolderLocation {
     }
 }
 
+function Toggle-ArchiveMultithreading {
+    $Global:ArchiveMultithreading = -not $Global:ArchiveMultithreading
+    $Global:Config.ArchiveMultithreading = $Global:ArchiveMultithreading
+    $Global:Config | Export-PowerShellDataFile -Path ".\scripts\configuration.psd1"
+}
+
 # Function Toggle CharacterTextures
 function Toggle-CharacterTextures {
     $Global:ProcessCharacterTextures = -not $Global:ProcessCharacterTextures
