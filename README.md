@@ -7,7 +7,7 @@ Still being created, not even done the basic testing, most of it is figured out 
 - Setup fake data dir etc, Test, Testing results into updates for scripts, complete scripts.
 - add centering on the data folder location line, as the whopping steam line, is not how it will look for people whom have a separate large programs drive.
 - Do a once over on all the scripts, make sure everything is seemingly ok, then try do some improvements.
-- option on main config menu to use or not use -mt command in handling of unpacking/packing archives.
+- option on main config menu to use or not use -mt command in handling of unpacking/packing archives, currently it should be hardcoded to be used.
 - Mutli-Thread, Upon detect GPUs, if there is more than 1 graphics card, that is not the default MS renderer, then on the option to set GPU have option to select "Multi-Gpu Dds Processing", this would result in workload being split into multiple lists, then individually processed by GPUs at same time in parrallel.
   
 
