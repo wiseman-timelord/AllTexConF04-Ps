@@ -21,67 +21,35 @@ DdsBa2Resize-Ps, designed for Fallout 4, epitomizes efficiency and user-friendli
 
 ### PREVIEW
 ```
+  ____      _     ____        ____  ____           _
+  |  _ \  __| |___| __ )  ____|___ \|  _ \ ___  ___(_)_______
+  | | | |/ _  / __|  _ \ / _  \ __) | |_) / _ \/ __| |_  / _ \
+  | |_| | (_| \__ \ |_) | (_| |/ __/|  _ <  __/\__ \ |/ /  __/
+  |____/ \__,_|___/____/ \__,_|_____|_| \_\___||___/_/___\___|
 
 ======================( AllTexConFO4-Ps )======================
--------------------------( Main Menu )-------------------------
+
+             ---( Pre-Processing Configuration )---
 
 
+                    1. Data Folder Location
+     C:\Program Files (x86)\Steam\steamapps\common\Fallout 4
 
+                    2. Max Image Resolution
+                           RATIOx1024
 
+                     3. Graphics Processor
+                  Radeon (TM) RX 470 Graphics
 
+                      B. Begin Processing
+                   (Ensure Correct Settings!!)
 
-
-
-                 1. Set Data Folder Location,
-
-                 2. Set Max Image Resolution,
-
-                 3. Set GPU Processor To Use,
-
-                 B. Begin Processing Textures,
-
-                       X. Exit Program.
-
-
-
-
+                        X. Exit Program
 
 
 
 ---------------------------------------------------------------
-Select, Settings=1-3, Begin=B, Exit=X:
-
-```
-```
-
-======================( AllTexConFO4-Ps )======================
---------------------------( GPU Menu )-------------------------
-
-
-
-
-
-
-                          Current GPU:
-                   Radeon (TM) RX 470 Graphics
-
-
-                1: Radeon (TM) RX 470 Graphics
-
-                2: AMD Radeon HD 7800 Series
-
-                3: Microsoft Basic Render Driver
-
-                    M. Return To Main Menu
-
-
-
-
-
-
-
----------------------------------------------------------------
-Select, GPU Choice=1-3, Main Menu=M:
+Select, Menu Options=1-3, Begin Resizing=B, Exit Program=X:
 
 ```
 ```
@@ -101,20 +69,29 @@ TexturesArchive1.ba2: Contents RePackaged.
 18:50: ...Texture Processing Completed.
 ```
 ```
-==================( AllTexConFO4-Ps )==================
+  ____      _     ____        ____  ____           _
+  |  _ \  __| |___| __ )  ____|___ \|  _ \ ___  ___(_)_______
+  | | | |/ _  / __|  _ \ / _  \ __) | |_) / _ \/ __| |_  / _ \
+  | |_| | (_| \__ \ |_) | (_| |/ __/|  _ <  __/\__ \ |/ /  __/
+  |____/ \__,_|___/____/ \__,_|_____|_| \_\___||___/_/___\___|
 
-                   Processing Stats:
-             Start: 22:33, Duration: 03:13
-               Processed: 57, Passed: 23  
-             Saved: 14.2 MB, Reduction: 9%                  
+======================( AllTexConFO4-Ps )======================
 
-                    Resulting Scores: 
-	      Current: 6.67, Previous: 5.50
-               Highest: 8.20, Lowest: 4.75
+               ---( Post-Processing Summary )---
+
+                       Processing Stats:
+                 Start: 22:33, Duration: 03:13
+                   Processed: 57, Passed: 23  
+                 Saved: 14.2 MB, Reduction: 9%                  
+
+                        Resulting Scores: 
+	          Current: 6.67, Previous: 5.50
+                   Highest: 8.20, Lowest: 4.75
               
-                       Verdict: 
-                  Average Score! (o_o)
+                           Verdict: 
+                      Average Score! (o_o)
 
+---------------------------------------------------------------
 Select, Error Log=E, Exit Program=X:
 
 ````
