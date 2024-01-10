@@ -57,7 +57,7 @@ BethDdsScale-Ps, designed for Modern Bethesda games for, Textures and Archives, 
 
 
 ---------------------------------------------------------------
-Select, Menu Options=1-3, Begin Resizing=B, Exit Program=X:
+Select, Menu Options=1-5, Begin Resizing=B, Exit Program=X:
 
 ```
 ```
