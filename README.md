@@ -1,7 +1,7 @@
 # BethDdsScale-Ps
 
 ### STATUS: DEVELOPMENT
-Still being created, not even done the basic testing, most of it is figured out and implemented...
+On hold due to "https://github.com/wiseman-timelord/CreditSight-Ps". Still being created, not even done the basic testing, most of it is figured out and implemented...
 - Test out the new blinging pre-processing configuration menu, fix issues..
 - Check code relating to operations is being centered around examplegame\data folder, and not, examplegame\ or examplegame\data\textures\.
 - add centering on the data folder location line, as the whopping steam line, is not how it will look for people whom have a separate large programs drive.
