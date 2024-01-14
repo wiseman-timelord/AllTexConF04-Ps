@@ -130,4 +130,4 @@ Select, Error Log=E, Exit Program=X:
 - Credit to, 7-Zip and Microsoft and TES5Edit, teams for relevantly, 7za abd DirectXTex and BSArch.
 
 ### DISCLAIMER
-This program is provided "as is" without warranties or support. Users are responsible for the content they, download and use, as well as, any resulting damage to, hardware or sanity.
+Read "License.Txt", its, what its there for and why its supplied with the package.
