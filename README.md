@@ -61,6 +61,9 @@ Select, Menu Options=1-5, Begin Resizing=B, Exit Program=X:
 
 ```
 ```
+
+======================( BethDdsScale-Ps )======================
+
 18:45: Texture Processing Started...
 
 Loose Texture Processing...
