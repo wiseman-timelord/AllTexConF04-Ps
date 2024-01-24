@@ -3,19 +3,19 @@ REM Script: BethDdsScale-Ps.Bat
 
 :: Initialization
 mode con cols=64 lines=30
-color 0E
+color 80
 title BethDdsScale-Ps
 cd /d "%~dp0"
 echo.
 echo Launcher Script Started...
 echo.
 timeout /t 2 /nobreak >nul
-echo Cleaning up...
+echo Cleaning up..
 if exist ".\Errors-Crash.Log" (
     echo ...Deleting Log...
     del ".\Errors-Crash.Log"
 )
-echo ...Cleaning Done.
+echo ..Cleaning Done.
 echo.
 timeout /t 1 /nobreak >nul
 
@@ -48,16 +48,13 @@ echo.
 echo.
 echo.
 echo.
-echo.
 echo ---------------------------------------------------------------
 
 :: Variables
 set /p choice=Select, Options=1-2, Exit=X: 
-echo.
 if "%choice%"=="1" goto executeMain
 if "%choice%"=="2" goto checkScript
 if "%choice%"=="x" goto end
-echo.
 echo Invalid choice. Try again.
 pause
 goto menu
@@ -66,17 +63,15 @@ goto menu
 :executeMain
 where pwsh >nul 2>&1
 if %ERRORLEVEL% equ 0 (
-    echo Launching as PowerShellCore Script...
-    echo.
+    echo Launching as PowerShellCore Script..
     timeout /t 2 /nobreak >nul
     pwsh.exe -NoProfile -ExecutionPolicy Bypass -File ".\main.ps1" 2>".\Errors-Crash.Log"
-    echo ...Main Script Exited.
+    echo ..Main Script Exited.
 ) else (
-    echo Launching as PowerShell Script...
-    echo.
+    echo Launching as PowerShell Script..
     timeout /t 2 /nobreak >nul
     powershell.exe -NoProfile -ExecutionPolicy Bypass -File ".\main.ps1" 2>".\Errors-Crash.Log"
-    echo ...Main Script Exited.
+    echo ..Main Script Exited.
 )
 timeout /t 1 /nobreak >nul
 goto menu
@@ -85,7 +80,9 @@ goto menu
 
 :: Function to Check File Structure
 :checkScript
-echo Checking Script Files...
+cls
+echo.
+echo Checking Script Files..
 set missing=0
 timeout /t 1 /nobreak >nul
 
@@ -95,17 +92,18 @@ if not exist ".\scripts\configuration.psd1" set missing=1
 if not exist ".\main.ps1" set missing=1
 
 if %missing%==1 (
-    echo ...Failure, Re-Install Program!
+    echo ..Failure, Re-Install Program!
 ) else (
-    echo ...Program Files Correct.
+    echo ..Program Files Correct.
 )
+echo.
+timeout /t 1 /nobreak >nul
+echo Returning to menu..
 echo.
 timeout /t 2 /nobreak >nul
 goto menu
 
 :: End Function
 :end
-echo.
-echo ...Launcher Script Finished.
-echo.
-pause
+echo ...Exit Process Initiated.
+timeout /t 5 /nobreak >nul
