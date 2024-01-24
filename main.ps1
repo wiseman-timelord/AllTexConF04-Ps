@@ -32,13 +32,13 @@ $Global:ResultingDataSize = 0
 function Show-ConfigurationMenu {
     do {
         Clear-Host
-		Show-AsciiArt
-		Show-Title
-        Write-Host "             ---( Pre-Processing Configuration )---`n`n"
+        Show-AsciiArt
+        Show-Title
+        Write-Host "             ---( Pre-Processing Configuration )---`n"
         Write-Host "                    1. Data Folder Location"
         Write-Host "  $($Global:DataDirectory)`n"
         Write-Host "                  2. Textures\Actors\Character"
-$charTextureStatus = if ($Global:ProcessCharacterTextures) { "Process" } else { "Ignore" }
+        $charTextureStatus = if ($Global:ProcessCharacterTextures) { "Process" } else { "Ignore" }
         Write-Host "                            $charTextureStatus`n"
         Write-Host "                    3. Max Image Resolution"
         Write-Host "                          RATIOx$($Global:TargetResolution)`n"
@@ -50,23 +50,23 @@ $charTextureStatus = if ($Global:ProcessCharacterTextures) { "Process" } else { 
         }
         Write-Host "                  $currentGpuDisplay`n"
         $archiveMultiThreadStatus = if ($Global:ArchiveMultithreading) { "Multi-Thread" } else { "Single-Thread" }
-    Write-Host "                   5. Multi-Thread Archiving"
-    Write-Host "                         $archiveMultiThreadStatus`n`n"
-    ...
+        Write-Host "                   5. Multi-Thread Archiving"
+        Write-Host "                         $archiveMultiThreadStatus`n`n"
         Show-Divider
         $choice = Read-Host "Select, Menu Options=1-5, Begin Resizing=B, Exit Program=X"
         switch ($choice) {
             "1" { Update-DataFolderLocation }
-			"2" { Toggle-CharacterTextures }
+            "2" { Toggle-CharacterTextures }
             "3" { Toggle-ImageResolution }
             "4" { Toggle-GPUSelection }
-			"5" { Toggle-ArchiveMultithreading }
+            "5" { Toggle-ArchiveMultithreading }
             "B" { InitiateTextureProcessing $Global:TargetResolution; break }
             "X" { Write-Host "Exiting..."; return }
             default { Write-Host "Invalid option, please try again" }
         }
     } while ($true)
 }
+
 
 # Function Displaysummaryscreen
 function DisplaySummaryScreen {
