@@ -2,7 +2,6 @@
 
 ### STATUS: DEVELOPMENT
 Github keeps directing me to this when I go to "https://github.com/wiseman-timelord", dunno if its the link on my bookmarks bar but and so, better finish it off I guess...Still being created, not even done the basic testing, most of it is figured out and implemented...
-- Test out the new blinging pre-processing configuration menu, fix issues..
 - Check code relating to operations is being centered around examplegame\data folder, and not, examplegame\ or examplegame\data\textures\.
 - add centering on the data folder location line, as the whopping steam line, is not how it will look for people whom have a separate large programs drive.
 - Check if it copies stuff to the cache folder, converts, then copies back or if it does it in place, its important it does the processing in the cache folder, incase it crashes mid-stride, copying files not so likely to crash.
