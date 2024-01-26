@@ -6,8 +6,7 @@ function Show-ConfigurationMenu {
         Clear-Host
         Show-AsciiArt
         Show-Title
-        Write-Host "             ---( Pre-Processing Configuration )---`n"
-        Write-Host "                    1. Data Folder Location"
+        Write-Host "`n                    1. Data Folder Location"
         Write-Host "  $($Global:DataDirectory)`n"
         Write-Host "                  2. Textures\Actors\Character"
         $charTextureStatus = if ($Global:ProcessCharacterTextures) { "Process" } else { "Ignore" }
@@ -23,7 +22,7 @@ function Show-ConfigurationMenu {
         Write-Host "                  $currentGpuDisplay`n"
         $archiveMultiThreadStatus = if ($Global:ArchiveMultithreading) { "Multi-Thread" } else { "Single-Thread" }
         Write-Host "                   5. Multi-Thread Archiving"
-        Write-Host "                         $archiveMultiThreadStatus`n`n"
+        Write-Host "                         $archiveMultiThreadStatus`n`n`n"
         Show-Divider
         $choice = Read-Host "Select, Menu Options=1-5, Begin Resizing=B, Exit Program=X"
         switch ($choice) {
