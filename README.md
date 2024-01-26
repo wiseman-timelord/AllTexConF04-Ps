@@ -3,10 +3,8 @@
 ### STATUS: DEVELOPMENT
 Github keeps directing me to this when I go to "https://github.com/wiseman-timelord", dunno if its the link on my bookmarks bar but and so, better finish it off I guess...Still being created, not even done the basic testing, most of it is figured out and implemented...
 - Check code relating to operations is being centered around examplegame\data folder, and not, examplegame\ or examplegame\data\textures\.
-- add centering on the data folder location line, as the whopping steam line, is not how it will look for people whom have a separate large programs drive.
 - Check if it copies stuff to the cache folder, converts, then copies back or if it does it in place, its important it does the processing in the cache folder, incase it crashes mid-stride, copying files not so likely to crash.
 - Mutli-Thread, Upon detect GPUs, if there is more than 1 graphics card, that is not the default MS renderer, then on the option to set GPU have option to select "Multi-Gpu Dds Processing", this would result in workload being split into multiple lists, then individually processed by GPUs at same time in parrallel.
-- Decide final order of options on pre-processing menu
 - Do a once over on all the scripts, make sure everything is seemingly ok, then try do some improvements.
 - Setup fake data dir etc, Test, Testing results into updates for scripts, complete scripts.
 
