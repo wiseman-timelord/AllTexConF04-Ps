@@ -26,7 +26,7 @@ BethDdsScale-Ps, designed for Modern Bethesda games for, Textures and Archives, 
 - **Detailed Output**: Provides comprehensive feedback during processing, including texture names and resolutions.
 - **Brown Faces Fix**: A comprihensive character assets avoidance option, that will bypass processing on troublesome items.
 - **Multi-Thread BSArch**: Menu toggle for archiving of Bsa/Ba2 files in multi-thread, it will use all CPU threads available.
-- **Superior Psd1s'**: uses [ImpExpPsd1-Ps](https://github.com/wiseman-timelord/ImpExpPsd1-Ps) for superior Import/Export Psd1 handling. 
+- **Superior Psd1s'**: Uses [ImpExpPsd1-Ps](https://github.com/wiseman-timelord/ImpExpPsd1-Ps) for superior Import/Export Psd1 handling. 
 
 ### PREVIEW
 ```
