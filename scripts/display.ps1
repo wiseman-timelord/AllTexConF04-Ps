@@ -1,4 +1,4 @@
-# Script: preferences.ps1
+# Script: display.ps1
 
 # Function Show Configurationmenu
 function Show-ConfigurationMenu {
@@ -6,24 +6,36 @@ function Show-ConfigurationMenu {
         Clear-Host
         Show-AsciiArt
         Show-Title
+
+        # Data Folder Location
         Write-Host "`n                    1. Data Folder Location"
-        Write-Host "  $($Global:DataDirectory)`n"
-        Write-Host "                  2. Textures\Actors\Character"
+        Write-Host (Get-CenteredText -text $Global:DataDirectory -totalWidth $Global:MenuColumnWidth)
+
+        # Textures\Actors\Character
         $charTextureStatus = if ($Global:ProcessCharacterTextures) { "Process" } else { "Ignore" }
+        Write-Host "`n                  2. Textures\Actors\Character"
         Write-Host "                            $charTextureStatus`n"
+
+        # Max Image Resolution
         Write-Host "                    3. Max Image Resolution"
         Write-Host "                          RATIOx$($Global:TargetResolution)`n"
-        Write-Host "                     4. Graphics Processor"
+
+        # Graphics Processor
         if ($Global:GpuList.Count -gt 0) {
             $currentGpuDisplay = $Global:GpuList[$Global:SelectedGPU].Split(':')[1].Trim()
         } else {
             $currentGpuDisplay = "No GPU Found"
         }
-        Write-Host "                  $currentGpuDisplay`n"
+        Write-Host "                     4. Graphics Processor"
+        Write-Host (Get-CenteredText -text $currentGpuDisplay -totalWidth $Global:MenuColumnWidth)
+
+        # Multi-Thread Archiving
         $archiveMultiThreadStatus = if ($Global:ArchiveMultithreading) { "Multi-Thread" } else { "Single-Thread" }
-        Write-Host "                   5. Multi-Thread Archiving"
+        Write-Host "`n                   5. Multi-Thread Archiving"
         Write-Host "                         $archiveMultiThreadStatus`n`n`n"
+
         Show-Divider
+
         $choice = Read-Host "Select, Menu Options=1-5, Begin Resizing=B, Exit Program=X"
         switch ($choice) {
             "1" { Update-DataFolderLocation }
@@ -37,6 +49,8 @@ function Show-ConfigurationMenu {
         }
     } while ($true)
 }
+
+
 
 # Function Displaysummaryscreen
 function DisplaySummaryScreen {

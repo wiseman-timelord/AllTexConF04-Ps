@@ -1,5 +1,15 @@
 # Script: utility.ps1
 
+# Centralize Menu Text
+function Get-CenteredText {
+    param (
+        [string]$text,
+        [int]$totalWidth
+    )
+    $paddingSize = [math]::Max(0, ($totalWidth - $text.Length) / 2)
+    return (' ' * $paddingSize) + $text
+}
+
 # Function Get Gpulist
 function Get-GPUList {
     $texconvOutput = & $Global:TexConvExecutable
@@ -38,3 +48,4 @@ function CalculateScore {
     if ($processingTime.TotalSeconds -eq 0) { return 0 }
     return [math]::Round(($texturesProcessed / $processingTime.TotalSeconds) * 10, 2)
 }
+

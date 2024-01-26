@@ -26,12 +26,14 @@ $Global:ProcessCharacterTextures = $Global:Config.ProcessCharacterTextures
 $Global:AvailableResolutions = @(512, 1024, 2048)
 
 # Initialize other global variables
+$Global:MenuColumnWidth = 64
 $Global:ProcessingStartTime = $null
 $Global:ProcessingEndTime = $null
 $Global:FilesProcessed = 0
 $Global:FilesPassed = 0
 $Global:PreviousDataSize = 0
 $Global:ResultingDataSize = 0
+
 
 # Entry Point
 Set-Location -Path $scriptPath
