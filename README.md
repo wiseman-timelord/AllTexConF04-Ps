@@ -38,7 +38,6 @@ BethDdsScale-Ps, designed for Modern Bethesda games for, Textures and Archives, 
 
 ======================( BethDdsScale-Ps )======================
 
-             ---( Pre-Processing Configuration )---
 
 
                     1. Data Folder Location
@@ -55,6 +54,7 @@ BethDdsScale-Ps, designed for Modern Bethesda games for, Textures and Archives, 
 
                    5. Multi-Thread Archiving
                         Single-Thread
+
 
 
 ---------------------------------------------------------------
