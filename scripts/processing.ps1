@@ -32,12 +32,6 @@ function Get-DataSize {
     return $totalSize / 1MB  
 }
 
-function Toggle-CharacterTextures {
-    $Global:ProcessCharacterTextures = -not $Global:ProcessCharacterTextures
-    $Global:Config.ProcessCharacterTextures = $Global:ProcessCharacterTextures
-    $Global:Config | Export-PowerShellDataFile -Path ".\scripts\configuration.psd1"
-}
-
 # Function Retrievetexturedetails
 function RetrieveTextureDetails {
     param (
@@ -163,7 +157,6 @@ function ProcessCompressedTextureFiles {
         RepackageTexturesIntoBA2 -sourceDirectory $unpackFolder -ba2FilePath $compressedFile.FullName -formatFlag $formatFlag
     }
 }
-
 
 # Function Initiatetextureprocessing
 function InitiateTextureProcessing {
