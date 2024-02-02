@@ -1,4 +1,4 @@
-# BethDdsScale-Ps
+# BethDdsScale
 
 ### STATUS: DEVELOPMENT
 Github keeps directing me to this when I go to "https://github.com/wiseman-timelord", dunno if its the link on my bookmarks bar but and so, better finish it off I guess...Still being created, not even done the basic testing, most of it is figured out and implemented...
@@ -9,7 +9,7 @@ Github keeps directing me to this when I go to "https://github.com/wiseman-timel
 - Setup fake data dir etc, Test, Testing results into updates for scripts, complete scripts.
 
 ### DESCRIPTION
-BethDdsScale-Ps, designed for Modern Bethesda games for, Textures and Archives, processing. It processes both, loose and Ba/Ba2 packed, textures, optimizing to user specified limits in size, for, non-transparent and transparent textures, respectively preserving the original formats of compression. BethDdsScale-Ps adjusts resolutions to, RATIOx4096, RATIOx2048 or RATIOx1024 or RATIOx512 or RATIOx256 (even Quake1 fans are catered for), somewhat maintaining wider images used for skies etc. Its interface is intuitive, and it provides detailed output, including texture names and resolutions. BethDdsScale-Ps is optimized for speed, extracting files from Ba2, then updating the textures folder only back to the original Bsa/Ba2. There are indeed other DDS conversion tools, but the standout features will be, support for any Bethesda game from Oldrim to Starfield:
+BethDdsScale, designed for Modern Bethesda games for, Textures and Archives, processing. It processes both, loose and Ba/Ba2 packed, textures, optimizing to user specified limits in size, for, non-transparent and transparent textures, respectively preserving the original formats of compression. BethDdsScale adjusts resolutions to, RATIOx4096, RATIOx2048 or RATIOx1024 or RATIOx512 or RATIOx256 (even Quake1 fans are catered for), somewhat maintaining wider images used for skies etc. Its interface is intuitive, and it provides detailed output, including texture names and resolutions. BethDdsScale is optimized for speed, extracting files from Ba2, then updating the textures folder only back to the original Bsa/Ba2. There are indeed other DDS conversion tools, but the standout features will be, support for any Bethesda game from Oldrim to Starfield:
 - Non-complicated configuration, at least the least complicated I've seen.
 - The GPU selection for processing.
 - processing all the textures, in loose and packed in ba2, files, in one action.
@@ -33,7 +33,7 @@ BethDdsScale-Ps, designed for Modern Bethesda games for, Textures and Archives, 
  | |_) |  __/ |_| | | | |_| | (_| \__ \___) | (_| (_| | |  __/
  |____/ \___|\__|_| |_|____/ \__,_|___/____/ \___\__,_|_|\___|
 
-======================( BethDdsScale-Ps )======================
+======================( BethDdsScale )======================
 
 
 
@@ -60,7 +60,7 @@ Select, Menu Options=1-5, Begin Resizing=B, Exit Program=X:
 ```
 ```
 
-======================( BethDdsScale-Ps )======================
+======================( BethDdsScale )======================
 
 18:45: Texture Processing Started...
 
@@ -84,7 +84,7 @@ TexturesArchive1.ba2: Contents RePackaged.
  | |_) |  __/ |_| | | | |_| | (_| \__ \___) | (_| (_| | |  __/
  |____/ \___|\__|_| |_|____/ \__,_|___/____/ \___\__,_|_|\___|
 
-======================( BethDdsScale-Ps )======================
+======================( BethDdsScale )======================
 
                ---( Post-Processing Summary )---
 
