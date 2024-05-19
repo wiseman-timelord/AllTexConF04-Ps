@@ -1,12 +1,7 @@
 # BethDdsScale
 
-### STATUS: DEVELOPMENT
-Github keeps directing me to this when I go to "https://github.com/wiseman-timelord", dunno if its the link on my bookmarks bar but and so, better finish it off I guess...Still being created, not even done the basic testing, most of it is figured out and implemented...
-- Check code relating to operations is being centered around examplegame\data folder, and not, examplegame\ or examplegame\data\textures\.
-- Check if it copies stuff to the cache folder, converts, then copies back or if it does it in place, its important it does the processing in the cache folder, incase it crashes mid-stride, copying files not so likely to crash.
-- Mutli-Thread, Upon detect GPUs, if there is more than 1 graphics card, that is not the default MS renderer, then on the option to set GPU have option to select "Multi-Gpu Dds Processing", this would result in workload being split into multiple lists, then individually processed by GPUs at same time in parrallel.
-- Do a once over on all the scripts, make sure everything is seemingly ok, then try do some improvements.
-- Setup fake data dir etc, Test, Testing results into updates for scripts, complete scripts.
+### STATUS: 
+Development delayed, not able to invest time into gaming interests, other projects have priority.
 
 ### DESCRIPTION
 BethDdsScale, designed for Modern Bethesda games for, Textures and Archives, processing. It processes both, loose and Ba/Ba2 packed, textures, optimizing to user specified limits in size, for, non-transparent and transparent textures, respectively preserving the original formats of compression. BethDdsScale adjusts resolutions to, RATIOx4096, RATIOx2048 or RATIOx1024 or RATIOx512 or RATIOx256 (even Quake1 fans are catered for), somewhat maintaining wider images used for skies etc. Its interface is intuitive, and it provides detailed output, including texture names and resolutions. BethDdsScale is optimized for speed, extracting files from Ba2, then updating the textures folder only back to the original Bsa/Ba2. There are indeed other DDS conversion tools, but the standout features will be, support for any Bethesda game from Oldrim to Starfield:
@@ -126,6 +121,17 @@ Select, Error Log=E, Exit Program=X:
 - The "Brown faces" bug in Fallout 4 can occur without resizing textures, possibly due to changes in, makeup and face, bc compression. BethDdsScale preserves the original compression, however, this is why the option exists to bypass character textures.
 - If you have problems with the Setup-Install.Bat, after sorting out firewall stuff, try typing "Set-ExecutionPolicy RemoteSigned" in a powershell console that has admin, to enable downloading from digitally signed servers.
 - On my Ryzen 9 x3900 with its 24 threads, the difference between, multi-thread and single-thread, unpacking of a 3GB Fallout 4 Ba2, while running some other apps was relevantly, 46 or 14, Seconds, thats 69% faster Archiving.   
+
+
+### DEVELOPMENT:
+Github keeps directing me to this when I go to "https://github.com/wiseman-timelord", dunno if its the link on my bookmarks bar but and so, better finish it off I guess...Still being created, not even done the basic testing, most of it is figured out and implemented...
+- Check code relating to operations is being centered around examplegame\data folder, and not, examplegame\ or examplegame\data\textures\.
+- Check if it copies stuff to the cache folder, converts, then copies back or if it does it in place, its important it does the processing in the cache folder, incase it crashes mid-stride, copying files not so likely to crash.
+- Mutli-Thread, Upon detect GPUs, if there is more than 1 graphics card, that is not the default MS renderer, then on the option to set GPU have option to select "Multi-Gpu Dds Processing", this would result in workload being split into multiple lists, then individually processed by GPUs at same time in parrallel.
+- Do a once over on all the scripts, make sure everything is seemingly ok, then try do some improvements.
+- Setup fake data dir etc, Test, Testing results into updates for scripts, complete scripts.
+
+
 
 ### CREDITS
 - Credit to, 7-Zip and Microsoft and TES5Edit, teams for relevantly, 7za abd DirectXTex and BSArch.
